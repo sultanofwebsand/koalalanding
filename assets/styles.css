@@ -1,12 +1,24 @@
 :root{
+  /* Manus-like palette */
+  --bg:#ffffff;
   --text:#0b0f1a;
   --muted:#5d6473;
   --line:#e7e9ee;
   --card:#ffffff;
-  --bg:#ffffff;
+  --soft:#fafafa;
+
   --shadow: 0 14px 38px rgba(15, 23, 42, 0.10);
+  --shadow2: 0 8px 18px rgba(15, 23, 42, 0.06);
+
   --radius: 14px;
-  --accent:#f38020; /* orange accent like Manus */
+
+  /* Manus orange accent */
+  --accent:#f38020;
+
+  /* Type scale tuned to match Manus */
+  --h1: clamp(40px, 4.2vw, 64px);
+  --kicker: clamp(18px, 1.7vw, 22px);
+  --body: 16px;
 }
 
 *{ box-sizing:border-box; }
@@ -15,20 +27,20 @@ body{
   margin:0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color:var(--text);
-  background: var(--bg);
+  background:var(--bg);
 }
-
-a{ color: inherit; }
 
 .container{
   width:min(1180px, calc(100% - 48px));
   margin:0 auto;
 }
 
+a{ color: inherit; }
+
 /* Top bar */
 .topbar{
-  border-bottom: 1px solid var(--line);
   background:#fff;
+  border-bottom: 1px solid var(--line);
 }
 .topbar__inner{
   height: 64px;
@@ -41,9 +53,9 @@ a{ color: inherit; }
   display:block;
 }
 
-/* Hero */
+/* Hero layout */
 .hero{
-  padding: 46px 0 18px;
+  padding: 46px 0 24px;
 }
 
 .hero__grid{
@@ -58,14 +70,14 @@ a{ color: inherit; }
   font-weight: 800;
   letter-spacing:-0.03em;
   line-height: 1.04;
-  font-size: clamp(40px, 4.2vw, 64px);
+  font-size: var(--h1);
 }
 
 .accent{ color: var(--accent); }
 
 .kicker{
   margin:0 0 18px;
-  font-size: clamp(18px, 1.7vw, 22px);
+  font-size: var(--kicker);
   font-weight: 700;
   line-height: 1.35;
 }
@@ -73,7 +85,7 @@ a{ color: inherit; }
 .lead{
   margin: 0 0 14px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: var(--body);
   line-height: 1.75;
   max-width: 70ch;
 }
@@ -85,15 +97,16 @@ a{ color: inherit; }
   width: 100%;
   height: auto;
   display:block;
-  max-width: 720px;
+  max-width: 760px;
 }
 
-/* Right column sticky card */
+/* Sticky right column */
 .hero__form{
   position: sticky;
   top: 18px;
 }
 
+/* Form card (matches Manus panel feel) */
 .card{
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -105,12 +118,14 @@ a{ color: inherit; }
 .card__head{
   padding: 18px 18px 14px;
   border-bottom: 1px solid var(--line);
-  background: #fafafa;
+  background: var(--soft);
 }
+
 .card__title{
   font-weight: 700;
   font-size: 14px;
 }
+
 .card__sub{
   margin-top: 6px;
   color: var(--muted);
@@ -121,16 +136,15 @@ a{ color: inherit; }
   padding: 14px;
 }
 
-/* Jotform iframe sizing:
-   - Desktop: fills viewport height nicely inside sticky card
-   - Mobile: taller */
+/* Jotform iframe sizing */
 .jotformFrame{
   width: 100%;
   border: 0;
   display:block;
   border-radius: 10px;
-  background: #fff;
+  background:#fff;
 
+  /* Desktop: fill viewport inside sticky card */
   height: calc(100vh - 220px);
   min-height: 560px;
   max-height: 860px;
@@ -150,18 +164,20 @@ a{ color: inherit; }
   margin-top: 34px;
 }
 
-.section h3{
+.section__title{
   margin: 0 0 10px;
   font-size: 28px;
   line-height: 1.25;
   letter-spacing:-0.02em;
+  font-weight: 800;
 }
 
-.muted{
+.section__sub{
   margin: 0 0 24px;
   color: var(--muted);
 }
 
+/* Tiles */
 .tiles{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -172,9 +188,10 @@ a{ color: inherit; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #fff;
-  box-shadow: 0 8px 18px rgba(15,23,42,.06);
+  box-shadow: var(--shadow2);
   padding: 18px;
 }
+
 .tile__icon{
   width: 36px;
   height: 36px;
@@ -186,10 +203,12 @@ a{ color: inherit; }
   margin-bottom: 12px;
   font-size: 16px;
 }
+
 .tile__title{
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 6px;
 }
+
 .tile__text{
   color: var(--muted);
   line-height: 1.6;
@@ -203,18 +222,21 @@ a{ color: inherit; }
   color: var(--muted);
   font-size: 13px;
 }
+
 .footer__links{
   display:flex;
   flex-wrap:wrap;
   gap: 12px 16px;
   margin-bottom: 12px;
 }
+
 .footer__links a{
   text-decoration:none;
 }
 .footer__links a:hover{
   text-decoration: underline;
 }
+
 .footer__copy{
   color: #8a92a3;
 }
