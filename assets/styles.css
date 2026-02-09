@@ -15,7 +15,7 @@
   /* Orange accent */
   --accent:#f68b1f;
 
-  /* Type scale tuned close to Manus */
+  /* Type scale */
   --h1: clamp(40px, 4.2vw, 64px);
   --kicker: clamp(18px, 1.7vw, 22px);
   --body: 16px;
@@ -31,9 +31,10 @@ body{
   background:var(--bg);
 }
 
+/* Wider page like Manus */
 .container{
-  width:min(1180px, calc(100% - 48px));
-  margin:0 auto;
+  width: min(1320px, calc(100% - 64px));
+  margin: 0 auto;
 }
 
 a{ color: inherit; }
@@ -56,18 +57,19 @@ a{ color: inherit; }
 
 /* HERO */
 .hero{
-  padding: 54px 0 26px; /* Manus-like vertical rhythm */
+  padding: 54px 0 48px;
 }
 
+/* Force 70/30 like Manus */
 .hero__grid{
   display:grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 44px;
+  grid-template-columns: 70% 30%;
+  gap: 48px;
   align-items:start;
 }
 
 .hero__copy{
-  max-width: 760px;
+  max-width: 920px;
 }
 
 .hero__copy h1{
@@ -92,10 +94,10 @@ a{ color: inherit; }
   color: var(--muted);
   font-size: var(--body);
   line-height: 1.75;
-  max-width: 72ch;
+  max-width: 78ch;
 }
 
-/* Globe image treatment (key difference vs your earlier version) */
+/* Globe (big + centred inside left column, like Manus) */
 .hero__art{
   margin-top: 28px;
   padding-top: 10px;
@@ -105,8 +107,8 @@ a{ color: inherit; }
   height: auto;
   display:block;
 
-  max-width: 980px;     /* big like Manus */
-  margin: 0 auto;       /* centred */
+  max-width: 980px;
+  margin: 0 auto;
   transform: translateY(6px);
 }
 
@@ -128,7 +130,7 @@ a{ color: inherit; }
 .card__head{
   padding: 20px 20px 16px;
   border-bottom: 1px solid var(--line);
-  background: #fff; /* Manus header feels white */
+  background: #fff;
 }
 
 .card__title{
@@ -168,11 +170,10 @@ a{ color: inherit; }
   font-size: 12px;
 }
 
-/* SECTION */
-.section{
-  padding: 52px 0 56px;
-  border-top: 1px solid var(--line);
-  margin-top: 34px;
+/* Left column tiles section */
+.leftSection{
+  margin-top: 44px;
+  padding-top: 10px;
 }
 
 .section__title{
@@ -188,11 +189,11 @@ a{ color: inherit; }
   color: var(--muted);
 }
 
-/* Tiles */
+/* Tiles (kept within left column width) */
 .tiles{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 16px;
 }
 
 .tile{
@@ -254,16 +255,23 @@ a{ color: inherit; }
 
 /* Mobile */
 @media (max-width: 980px){
+  .container{
+    width: min(980px, calc(100% - 32px));
+  }
+
   .hero__grid{
     grid-template-columns: 1fr;
     gap: 22px;
   }
+
   .hero__form{
     position: static;
   }
+
   .tiles{
     grid-template-columns: 1fr;
   }
+
   .jotformFrame{
     height: 980px;
     max-height: none;
