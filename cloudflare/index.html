@@ -6,17 +6,14 @@
   <title>The enterprise guide to securing and scaling AI</title>
   <meta name="description" content="3 challenges of AI implementation — and how a connectivity cloud can help" />
 
-  <!-- Manus-like font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Site CSS (repo root /assets) -->
   <link rel="stylesheet" href="/assets/styles.css" />
 </head>
 
 <body>
-  <!-- Top bar -->
   <header class="topbar">
     <div class="container topbar__inner">
       <img
@@ -28,7 +25,6 @@
   </header>
 
   <main class="container">
-    <!-- Hero + Left-column tiles -->
     <section class="hero">
       <div class="hero__grid">
         <!-- LEFT (70%) -->
@@ -52,15 +48,10 @@
             In <strong>The enterprise guide to securing and scaling AI</strong>, we dive deeper into each of these challenges.
           </p>
 
-          <!-- Globe image -->
           <div class="hero__art">
-            <img
-              src="/assets/images/globe.png"
-              alt="Connectivity globe illustration"
-            />
+            <img src="/assets/images/globe.png" alt="Connectivity globe illustration" />
           </div>
 
-          <!-- 3 boxes UNDER the content (still in left column) -->
           <div class="leftSection">
             <h2 class="section__title">
               In <span class="accent">The enterprise guide to securing and scaling AI</span>, we dive deeper into
@@ -90,15 +81,13 @@
           </div>
         </div>
 
-        <!-- RIGHT (30%) sticky form -->
-        <aside class="hero__form">
-          <div class="card">
-            <div class="card__head">
-              <div class="card__title">Complete the Form Below</div>
-              <div class="card__sub">Download the guide instantly after submission.</div>
-            </div>
+        <!-- RIGHT (30%) sticky Manus-like card -->
+        <aside class="formCol">
+          <div class="manusCard">
+            <h2 class="manusTitle">Complete the Form Below</h2>
 
-            <div class="card__body">
+            <!-- Jotform embed (can’t style inner fields; we style the container) -->
+            <div class="manusFormWell">
               <iframe
                 title="Jotform"
                 class="jotformFrame"
@@ -108,19 +97,20 @@
                 allow="geolocation; microphone; camera; fullscreen"
               ></iframe>
 
-              <!-- Jotform helper -->
               <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
             </div>
 
-            <div class="card__foot">
-              <small>We never sell your data. You can unsubscribe at any time.</small>
-            </div>
+            <p class="manusFineprint">
+              In submitting this form, you agree to receive information related to products, events, and special offers.
+              You can unsubscribe at any time. We never sell your data.
+            </p>
+
+            <p class="powered">Powered by Jotform</p>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer__links">
         <a href="https://www.koalab2b.com/about" target="_blank" rel="noopener">About</a>
