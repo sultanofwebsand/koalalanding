@@ -1,21 +1,19 @@
 :root{
-  /* Manus-like palette */
   --bg:#ffffff;
-  --text:#0b0f1a;
-  --muted:#5d6473;
-  --line:#e7e9ee;
-  --card:#ffffff;
-  --soft:#fafafa;
+  --text:#0B0B0B;
+  --muted:#4A4A4A;
+  --muted2:#7A7A7A;
 
-  --shadow: 0 14px 38px rgba(15, 23, 42, 0.10);
+  --line:#E6E6E6;
+
+  --accent:#F38020;
+  --accentHover:#E06A0A;
+
+  --radius:16px; /* rounded-2xl feel */
+
+  --shadow: 0 10px 26px rgba(0,0,0,0.12);
   --shadow2: 0 8px 18px rgba(15, 23, 42, 0.06);
 
-  --radius: 16px;
-
-  /* Orange accent */
-  --accent:#f68b1f;
-
-  /* Type scale */
   --h1: clamp(40px, 4.2vw, 64px);
   --kicker: clamp(18px, 1.7vw, 22px);
   --body: 16px;
@@ -31,7 +29,6 @@ body{
   background:var(--bg);
 }
 
-/* Wider page like Manus */
 .container{
   width: min(1320px, calc(100% - 64px));
   margin: 0 auto;
@@ -60,7 +57,7 @@ a{ color: inherit; }
   padding: 54px 0 48px;
 }
 
-/* Force 70/30 like Manus */
+/* 70/30 like Manus */
 .hero__grid{
   display:grid;
   grid-template-columns: 70% 30%;
@@ -69,7 +66,7 @@ a{ color: inherit; }
 }
 
 .hero__copy{
-  max-width: 920px;
+  max-width: 940px;
 }
 
 .hero__copy h1{
@@ -91,13 +88,13 @@ a{ color: inherit; }
 
 .lead{
   margin: 0 0 14px;
-  color: var(--muted);
+  color: #333;
   font-size: var(--body);
   line-height: 1.75;
-  max-width: 78ch;
+  max-width: 80ch;
 }
 
-/* Globe (big + centred inside left column, like Manus) */
+/* Globe */
 .hero__art{
   margin-top: 28px;
   padding-top: 10px;
@@ -106,71 +103,12 @@ a{ color: inherit; }
   width: 100%;
   height: auto;
   display:block;
-
   max-width: 980px;
   margin: 0 auto;
   transform: translateY(6px);
 }
 
-/* Sticky right form */
-.hero__form{
-  position: sticky;
-  top: 18px;
-}
-
-/* Form card */
-.card{
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--card);
-  box-shadow: var(--shadow);
-  overflow:hidden;
-}
-
-.card__head{
-  padding: 20px 20px 16px;
-  border-bottom: 1px solid var(--line);
-  background: #fff;
-}
-
-.card__title{
-  font-weight: 800;
-  font-size: 14px;
-  text-align:center;
-}
-
-.card__sub{
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 13px;
-  text-align:center;
-}
-
-.card__body{
-  padding: 16px 16px 10px;
-}
-
-/* Jotform sizing */
-.jotformFrame{
-  width: 100%;
-  border: 0;
-  display:block;
-  border-radius: 10px;
-  background:#fff;
-
-  height: calc(100vh - 240px);
-  min-height: 560px;
-  max-height: 980px;
-}
-
-.card__foot{
-  padding: 12px 18px 18px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 12px;
-}
-
-/* Left column tiles section */
+/* Left column section */
 .leftSection{
   margin-top: 44px;
   padding-top: 10px;
@@ -186,10 +124,10 @@ a{ color: inherit; }
 
 .section__sub{
   margin: 0 0 24px;
-  color: var(--muted);
+  color: var(--muted2);
 }
 
-/* Tiles (kept within left column width) */
+/* Tiles */
 .tiles{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -211,7 +149,7 @@ a{ color: inherit; }
   display:flex;
   align-items:center;
   justify-content:center;
-  background: rgba(246,139,31,.10);
+  background: rgba(243,128,32,.10);
   margin-bottom: 12px;
   font-size: 16px;
 }
@@ -222,16 +160,77 @@ a{ color: inherit; }
 }
 
 .tile__text{
-  color: var(--muted);
+  color: #4A4A4A;
   line-height: 1.6;
   font-size: 14px;
+}
+
+/* RIGHT column - Manus style */
+.formCol{
+  position: sticky;
+  top: 32px; /* lg:top-8 */
+}
+
+.manusCard{
+  background:#fff;
+  border: 1px solid var(--line);
+  border-radius: 24px; /* rounded-2xl-ish */
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+@media (min-width: 768px){
+  .manusCard{ padding: 32px; } /* md:p-8 */
+}
+
+.manusTitle{
+  margin: 0 0 24px;
+  text-align:center;
+  font-size: 24px;  /* text-2xl */
+  font-weight: 800;
+  color: var(--text);
+}
+
+.manusFormWell{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  background:#fff;
+}
+
+/* Jotform iframe sizing */
+.jotformFrame{
+  width: 100%;
+  border: 0;
+  display:block;
+  border-radius: 10px;
+  background:#fff;
+
+  height: calc(100vh - 300px);
+  min-height: 560px;
+  max-height: 980px;
+}
+
+.manusFineprint{
+  margin: 16px 0 0;
+  font-size: 12px;
+  color: var(--muted2);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.powered{
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--muted2);
+  text-align:center;
 }
 
 /* Footer */
 .footer{
   border-top: 1px solid var(--line);
   padding: 20px 0 34px;
-  color: var(--muted);
+  color: var(--muted2);
   font-size: 13px;
 }
 
@@ -250,7 +249,7 @@ a{ color: inherit; }
 }
 
 .footer__copy{
-  color: #8a92a3;
+  color: var(--muted2);
 }
 
 /* Mobile */
@@ -264,7 +263,7 @@ a{ color: inherit; }
     gap: 22px;
   }
 
-  .hero__form{
+  .formCol{
     position: static;
   }
 
