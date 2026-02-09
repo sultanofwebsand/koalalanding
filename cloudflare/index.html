@@ -5,142 +5,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The enterprise guide to securing and scaling AI</title>
 
-  <!-- IMPORTANT: absolute path because page is served from /cloudflare/ -->
-  <link rel="stylesheet" href="/cloudflare/assets/styles.css?v=12" />
+  <!-- IMPORTANT: your CSS is served at /assets/styles.css -->
+  <link rel="stylesheet" href="/assets/styles.css?v=12" />
 
-  <!-- Optional: nice font (safe + close to Manus feel) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Optional: nicer system font stack -->
+  <meta name="theme-color" content="#ffffff" />
 </head>
 
 <body>
+  <!-- Top bar / logo area -->
   <header class="topbar">
-    <div class="container topbar__inner">
-      <!-- Keep logo small even if CSS fails -->
-      <img
-        class="brand__logo"
-        src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg"
-        alt="Cloudflare"
-        style="height:22px;width:auto;"
-      />
+    <div class="container">
+      <div class="brand">
+        <!-- Replace with your preferred logo asset if you want -->
+        <img src="/assets/cloudflare-logo.png" alt="Cloudflare" class="brand-logo" onerror="this.style.display='none'"/>
+      </div>
     </div>
   </header>
 
   <main class="page">
     <section class="hero">
       <div class="container">
-        <div class="hero__grid">
-          <!-- LEFT (70%) -->
-          <div class="hero__left">
-            <div class="hero__heading">
-              <h1 class="h1">
+        <div class="layout">
+          <!-- LEFT (≈70%) -->
+          <div class="left">
+            <div class="headline">
+              <h1>
                 The enterprise guide to
                 <span class="accent">securing and scaling AI</span>
               </h1>
 
-              <h2 class="h2">
+              <h2>
                 3 challenges of AI implementation — and how a connectivity cloud can help
               </h2>
             </div>
 
-            <div class="prose">
+            <div class="intro">
               <p>
-                For many enterprises, the return on AI investments is still forthcoming. AI technology spans a wide range
-                of use cases and is often complex and resource-intensive to build, scale, and secure — which can have a
-                tangible impact on enterprise-level earnings.
+                For many enterprises, the return on AI investments is still forthcoming.
+                AI technology spans a wide range of use cases and is often complex and resource-intensive
+                to build, scale, and secure — which can have a tangible impact on enterprise-level earnings.
               </p>
 
               <p>
-                The enterprise guide to securing and scaling AI, we dive deeper into each of these challenges
+                In <span class="strong">The enterprise guide to securing and scaling AI</span>, we dive deeper
+                into each of these challenges (and provide practical strategies for moving past them), including…
               </p>
             </div>
 
-            <!-- Illustration (like Manus) -->
-            <div class="hero__imageWrap">
+            <!-- Illustration -->
+            <div class="illustration">
+              <!-- Put the PNG in /assets/ (you said it's visible already) -->
               <img
-                class="hero__image"
+                src="/assets/kYSDqzmZqcUOvUDZ.png"
                 alt="Global connectivity illustration"
-                src="/cloudflare/assets/kYSDqzmZqcUOvUDZ.png"
+                loading="lazy"
               />
             </div>
 
-            <!-- Cards section (must remain in LEFT column) -->
-            <section class="cards">
-              <div class="cards__intro">
-                <h3 class="h3">
-                  In <span class="accent">The enterprise guide to securing and scaling AI</span>, we dive deeper into each of these challenges
+            <!-- Section title + cards -->
+            <div class="cards-block">
+              <div class="cards-title">
+                <h3>
+                  In <span class="accent">The enterprise guide to securing and scaling AI</span>,
+                  we dive deeper into each of these challenges
                 </h3>
-                <p class="cards__sub">
-                  (and provide practical strategies for moving past them), including…
-                </p>
+                <p>(and provide practical strategies for moving past them), including…</p>
               </div>
 
-              <div class="cards__row" aria-label="Key topics">
+              <div class="cards">
                 <!-- Card 1 -->
                 <article class="card">
-                  <div class="card__icon" aria-hidden="true">
-                    <!-- Bolt SVG -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  <div class="icon-wrap">
+                    <!-- Inline SVG: bolt -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
                     </svg>
                   </div>
-                  <h4 class="card__title">Why enterprises struggle</h4>
-                  <p class="card__text">to meaningfully build AI infrastructure at scale</p>
+                  <h4>Why enterprises struggle</h4>
+                  <p>to meaningfully build AI infrastructure at scale</p>
                 </article>
 
                 <!-- Card 2 -->
                 <article class="card">
-                  <div class="card__icon" aria-hidden="true">
-                    <!-- Cloud SVG -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                  <div class="icon-wrap">
+                    <!-- Inline SVG: cloud -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 0 0-.1-10 5 5 0 0 0-9.78 2.1A4 4 0 0 0 3 15z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
                     </svg>
                   </div>
-                  <h4 class="card__title">How hyperscalers fall short</h4>
-                  <p class="card__text">of enterprise expectations</p>
+                  <h4>How hyperscalers fall short</h4>
+                  <p>of enterprise expectations</p>
                 </article>
 
                 <!-- Card 3 -->
                 <article class="card">
-                  <div class="card__icon" aria-hidden="true">
-                    <!-- Lock SVG -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  <div class="icon-wrap">
+                    <!-- Inline SVG: lock -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M12 17v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                   </div>
-                  <h4 class="card__title">What security issues</h4>
-                  <p class="card__text">affect AI usage and reliability</p>
+                  <h4>What security issues</h4>
+                  <p>affect AI usage and reliability</p>
                 </article>
               </div>
-            </section>
+            </div>
           </div>
 
-          <!-- RIGHT (30%) - sticky on desktop -->
-          <aside class="hero__right">
-            <div class="formCard">
-              <h3 class="formCard__title">Complete the Form Below</h3>
+          <!-- RIGHT (≈30%) -->
+          <aside class="right">
+            <div class="sticky">
+              <div class="form-card">
+                <h3 class="form-title">Complete the Form Below</h3>
 
-              <!-- JOTFORM: paste your iframe EXACTLY where this comment is.
-                   Keep width="100%" and remove fixed pixel widths if present. -->
-              <div class="formEmbed">
-                <!-- === START JOTFORM IFRAME === -->
-                <!-- Replace the iframe below with your real Jotform iframe code -->
+                <!-- Replace this iframe with your real Jotform embed -->
+                <!-- IMPORTANT: keep class="jotform-embed" -->
                 <iframe
-                  title="Jotform"
-                  src="about:blank"
-                  style="width:100%; height:980px; border:0; border-radius:12px;"
-                  loading="lazy"
+                  class="jotform-embed"
+                  src="https://form.jotform.com/XXXXXXXXXXXXXX"
+                  title="Download form"
+                  frameborder="0"
+                  scrolling="auto"
+                  allow="geolocation; microphone; camera"
                 ></iframe>
-                <!-- === END JOTFORM IFRAME === -->
-              </div>
 
-              <p class="formCard__fineprint">
-                Powered by Jotform
-              </p>
+                <p class="form-footnote">
+                  Powered by Jotform
+                </p>
+              </div>
             </div>
           </aside>
         </div>
@@ -148,8 +143,8 @@
     </section>
 
     <footer class="footer">
-      <div class="container footer__inner">
-        <p>© The Nexum Group FZE LLC</p>
+      <div class="container footer-inner">
+        <div class="footer-left">© The Nexus Group FZE LLC</div>
       </div>
     </footer>
   </main>
