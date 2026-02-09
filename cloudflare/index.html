@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Site CSS -->
+  <!-- Site CSS (repo root /assets) -->
   <link rel="stylesheet" href="/assets/styles.css" />
 </head>
 
@@ -28,10 +28,10 @@
   </header>
 
   <main class="container">
-    <!-- Hero -->
+    <!-- Hero + Left-column tiles -->
     <section class="hero">
       <div class="hero__grid">
-        <!-- LEFT -->
+        <!-- LEFT (70%) -->
         <div class="hero__copy">
           <h1>
             The enterprise guide to <span class="accent">securing</span><br />
@@ -52,16 +52,45 @@
             In <strong>The enterprise guide to securing and scaling AI</strong>, we dive deeper into each of these challenges.
           </p>
 
-          <!-- Globe -->
+          <!-- Globe image -->
           <div class="hero__art">
             <img
               src="/assets/images/globe.png"
               alt="Connectivity globe illustration"
             />
           </div>
+
+          <!-- 3 boxes UNDER the content (still in left column) -->
+          <div class="leftSection">
+            <h2 class="section__title">
+              In <span class="accent">The enterprise guide to securing and scaling AI</span>, we dive deeper into
+              each of these challenges
+            </h2>
+            <p class="section__sub">(and provide practical strategies for moving past them), including…</p>
+
+            <div class="tiles">
+              <article class="tile">
+                <div class="tile__icon">⚡</div>
+                <div class="tile__title">Why enterprises struggle</div>
+                <div class="tile__text">to meaningfully build AI infrastructure at scale</div>
+              </article>
+
+              <article class="tile">
+                <div class="tile__icon">☁️</div>
+                <div class="tile__title">How hyperscalers fall short</div>
+                <div class="tile__text">of enterprise expectations</div>
+              </article>
+
+              <article class="tile">
+                <div class="tile__icon">🔒</div>
+                <div class="tile__title">What security issues</div>
+                <div class="tile__text">affect AI usage and reliability</div>
+              </article>
+            </div>
+          </div>
         </div>
 
-        <!-- RIGHT (sticky form) -->
+        <!-- RIGHT (30%) sticky form -->
         <aside class="hero__form">
           <div class="card">
             <div class="card__head">
@@ -88,35 +117,6 @@
             </div>
           </div>
         </aside>
-      </div>
-    </section>
-
-    <!-- Tiles -->
-    <section class="section">
-      <h2 class="section__title">
-        In <span class="accent">The enterprise guide to securing and scaling AI</span>, we dive deeper into
-        each of these challenges
-      </h2>
-      <p class="section__sub">(and provide practical strategies for moving past them), including…</p>
-
-      <div class="tiles">
-        <article class="tile">
-          <div class="tile__icon">⚡</div>
-          <div class="tile__title">Why enterprises struggle</div>
-          <div class="tile__text">to meaningfully build AI infrastructure at scale</div>
-        </article>
-
-        <article class="tile">
-          <div class="tile__icon">☁️</div>
-          <div class="tile__title">How hyperscalers fall short</div>
-          <div class="tile__text">of enterprise expectations</div>
-        </article>
-
-        <article class="tile">
-          <div class="tile__icon">🔒</div>
-          <div class="tile__title">What security issues</div>
-          <div class="tile__text">affect AI usage and reliability</div>
-        </article>
       </div>
     </section>
 
