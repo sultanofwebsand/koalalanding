@@ -1,152 +1,187 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The enterprise guide to securing and scaling AI</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The enterprise guide to securing and scaling AI</title>
 
-  <!-- IMPORTANT: your CSS is served at /assets/styles.css -->
-  <link rel="stylesheet" href="/assets/styles.css?v=12" />
+    <!-- Inter font (Manus-style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Optional: nicer system font stack -->
-  <meta name="theme-color" content="#ffffff" />
-</head>
+    <!-- Your global CSS (you confirmed this is live) -->
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
 
-<body>
-  <!-- Top bar / logo area -->
-  <header class="topbar">
-    <div class="container">
-      <div class="brand">
-        <!-- Replace with your preferred logo asset if you want -->
-        <img src="/assets/cloudflare-logo.png" alt="Cloudflare" class="brand-logo" onerror="this.style.display='none'"/>
+  <body>
+    <!-- Top bar / logo -->
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <img
+          class="brandmark"
+          src="/assets/cloudflare-logo.png"
+          alt="Cloudflare"
+          loading="eager"
+        />
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="page">
-    <section class="hero">
-      <div class="container">
-        <div class="layout">
-          <!-- LEFT (≈70%) -->
-          <div class="left">
-            <div class="headline">
-              <h1>
-                The enterprise guide to
-                <span class="accent">securing and scaling AI</span>
-              </h1>
+    <!-- Hero -->
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero__grid">
+            <!-- LEFT COLUMN -->
+            <div class="hero__left">
+              <div class="hero__heading">
+                <h1 class="h1">
+                  The enterprise guide to
+                  <span class="accent">securing and scaling AI</span>
+                </h1>
 
-              <h2>
-                3 challenges of AI implementation — and how a connectivity cloud can help
-              </h2>
-            </div>
-
-            <div class="intro">
-              <p>
-                For many enterprises, the return on AI investments is still forthcoming.
-                AI technology spans a wide range of use cases and is often complex and resource-intensive
-                to build, scale, and secure — which can have a tangible impact on enterprise-level earnings.
-              </p>
-
-              <p>
-                In <span class="strong">The enterprise guide to securing and scaling AI</span>, we dive deeper
-                into each of these challenges (and provide practical strategies for moving past them), including…
-              </p>
-            </div>
-
-            <!-- Illustration -->
-            <div class="illustration">
-              <!-- Put the PNG in /assets/ (you said it's visible already) -->
-              <img
-                src="/assets/globe.png"
-                alt="Global connectivity illustration"
-                loading="lazy"
-              />
-            </div>
-
-            <!-- Section title + cards -->
-            <div class="cards-block">
-              <div class="cards-title">
-                <h3>
-                  In <span class="accent">The enterprise guide to securing and scaling AI</span>,
-                  we dive deeper into each of these challenges
-                </h3>
-                <p>(and provide practical strategies for moving past them), including…</p>
+                <h2 class="h2">
+                  3 challenges of AI implementation — and how a connectivity cloud can help
+                </h2>
               </div>
 
-              <div class="cards">
-                <!-- Card 1 -->
-                <article class="card">
-                  <div class="icon-wrap">
-                    <!-- Inline SVG: bolt -->
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                  <h4>Why enterprises struggle</h4>
-                  <p>to meaningfully build AI infrastructure at scale</p>
-                </article>
+              <div class="hero__copy">
+                <p class="p">
+                  For many enterprises, the return on AI investments is still forthcoming. AI technology spans a
+                  wide range of use cases and is often complex and resource-intensive to build, scale, and secure —
+                  which can have a tangible impact on enterprise-level earnings.
+                </p>
 
-                <!-- Card 2 -->
-                <article class="card">
-                  <div class="icon-wrap">
-                    <!-- Inline SVG: cloud -->
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 0 0-.1-10 5 5 0 0 0-9.78 2.1A4 4 0 0 0 3 15z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                  <h4>How hyperscalers fall short</h4>
-                  <p>of enterprise expectations</p>
-                </article>
-
-                <!-- Card 3 -->
-                <article class="card">
-                  <div class="icon-wrap">
-                    <!-- Inline SVG: lock -->
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                      <path d="M12 17v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                  <h4>What security issues</h4>
-                  <p>affect AI usage and reliability</p>
-                </article>
-              </div>
-            </div>
-          </div>
-
-          <!-- RIGHT (≈30%) -->
-          <aside class="right">
-            <div class="sticky">
-              <div class="form-card">
-                <h3 class="form-title">Complete the Form Below</h3>
-
-                <!-- Replace this iframe with your real Jotform embed -->
-                <!-- IMPORTANT: keep class="jotform-embed" -->
-                <iframe
-                  class="jotform-embed"
-                  src="https://form.jotform.com/XXXXXXXXXXXXXX"
-                  title="Download form"
-                  frameborder="0"
-                  scrolling="auto"
-                  allow="geolocation; microphone; camera"
-                ></iframe>
-
-                <p class="form-footnote">
-                  Powered by Jotform
+                <p class="p">
+                  The enterprise guide to securing and scaling AI, we dive deeper into each of these challenges
                 </p>
               </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
 
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div class="footer-left">© Koala B2B 2026</div>
-      </div>
-    </footer>
-  </main>
-</body>
+              <!-- Illustration (desktop only like Manus; still shows on mobile below via CSS if needed) -->
+              <div class="hero__imageWrap">
+                <img
+                  class="hero__image"
+                  src="/assets/kYSDqzmZqcUOvUDZ.png"
+                  alt="Global connectivity illustration"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Cards section (LEFT column under the text) -->
+              <div class="cards">
+                <div class="cards__intro">
+                  <h3 class="h3">
+                    In <span class="accent">The enterprise guide to securing and scaling AI</span>, we dive deeper
+                    into each of these challenges
+                  </h3>
+                  <p class="p p--small">
+                    (and provide practical strategies for moving past them), including…
+                  </p>
+                </div>
+
+                <div class="cardRow" aria-label="Key challenges">
+                  <!-- Card 1 -->
+                  <article class="card">
+                    <div class="card__iconBox" aria-hidden="true">
+                      <!-- Lightning -->
+                      <svg class="card__icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <h4 class="card__title">Why enterprises struggle</h4>
+                    <p class="card__text">to meaningfully build AI infrastructure at scale</p>
+                  </article>
+
+                  <!-- Card 2 -->
+                  <article class="card">
+                    <div class="card__iconBox" aria-hidden="true">
+                      <!-- Cloud -->
+                      <svg class="card__icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M3 15a4 4 0 0 0 4 4h9a5 5 0 1 0-.1-9.999A5.002 5.002 0 1 0 6.12 11.096A4.001 4.001 0 0 0 3 15Z"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <h4 class="card__title">How hyperscalers fall short</h4>
+                    <p class="card__text">of enterprise expectations</p>
+                  </article>
+
+                  <!-- Card 3 -->
+                  <article class="card">
+                    <div class="card__iconBox" aria-hidden="true">
+                      <!-- Lock -->
+                      <svg class="card__icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M12 15v2"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                        <path
+                          d="M6 11h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2Z"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M8 11V7a4 4 0 0 1 8 0v4"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <h4 class="card__title">What security issues</h4>
+                    <p class="card__text">affect AI usage and reliability</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN (sticky form) -->
+            <aside class="hero__right">
+              <div class="formCard">
+                <h3 class="formCard__title">Complete the Form Below</h3>
+
+                <!-- ✅ Replace the iframe src with your actual Jotform embed URL -->
+                <div class="jotformWrap">
+                  <iframe
+                    class="jotformFrame"
+                    title="Jotform"
+                    src="PASTE_YOUR_JOTFORM_IFRAME_SRC_HERE"
+                    frameborder="0"
+                    scrolling="yes"
+                    allow="geolocation; microphone; camera"
+                  ></iframe>
+                </div>
+
+                <p class="formCard__footnote">Powered by Jotform</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container footer__inner">
+          <p class="footer__text">© The Nexum Group FZE LLC</p>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
