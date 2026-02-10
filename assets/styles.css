@@ -1,281 +1,145 @@
-/* =========================
-   Manus-style base
-========================= */
 :root{
-  --bg: #ffffff;
-  --text: #0B0B0B;
-  --muted: #4A4A4A;
-  --muted2: #7A7A7A;
-  --border: #E6E6E6;
-  --accent: #F38020; /* ✅ Manus orange */
-  --link: #0057FF;
-  --shadow: 0 12px 28px rgba(11,11,11,0.10);
-  --shadowHover: 0 16px 36px rgba(11,11,11,0.14);
-  --radiusLg: 16px;
-  --radiusXl: 20px;
+  --orange:#F38020;
+  --text:#0B0B0B;
+  --muted:#4A4A4A;
+  --border:#E6E6E6;
 }
 
-*{ box-sizing: border-box; }
-html, body { height: 100%; }
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color:var(--text);
+  background:#fff;
 }
 
-img{ max-width:100%; height:auto; display:block; }
-a{ color: var(--link); text-decoration: none; }
-a:hover{ text-decoration: underline; }
-
-.container{
-  width: min(1240px, calc(100% - 48px)); /* ✅ wide like Manus */
-  margin: 0 auto;
-}
-
-/* =========================
-   Top bar
-========================= */
+/* Top */
 .topbar{
-  border-bottom: 1px solid #EFEFEF;
-  background: #fff;
+  padding:18px 40px;
+  border-bottom:1px solid #eee;
 }
-.topbar__inner{
-  display:flex;
-  align-items:center;
-  height: 64px;
-}
-.brandmark{
-  height: 22px;
-  width:auto;
-}
+.topbar img{height:28px}
 
-/* =========================
-   Hero layout
-========================= */
-.hero{
-  padding: 36px 0 28px;
-  background: #fff;
-}
-
-.hero__grid{
+/* Layout */
+.page{max-width:1280px;margin:0 auto;padding:40px}
+.layout{
   display:grid;
-  gap: 28px;
-  align-items:start;
+  grid-template-columns:70% 30%;
+  gap:40px;
+}
+@media(max-width:1024px){
+  .layout{grid-template-columns:1fr}
 }
 
-/* Desktop 2-column grid: left fluid, right fixed like Manus */
-@media (min-width: 1024px){
-  .hero__grid{
-    grid-template-columns: 1fr 480px; /* ✅ Manus: right column fixed */
-    gap: 48px;
-  }
-  .hero__right{
-    position: sticky;
-    top: 24px;
-    align-self: start;
-  }
+/* Left */
+.left h1{
+  font-size:56px;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+.left h1 span{color:var(--orange)}
+.left h2{
+  font-size:26px;
+  margin-bottom:18px;
+}
+.lead{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+.hero-image{
+  width:100%;
+  max-width:720px;
+  margin:40px 0;
 }
 
-.hero__left{ min-width: 0; }
-.hero__heading{ margin-bottom: 18px; }
-
-.h1{
-  font-size: clamp(34px, 4.4vw, 56px);
-  line-height: 1.06;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 0 0 14px;
+.section-title{
+  font-size:26px;
+  margin-top:20px;
 }
-.h2{
-  font-size: clamp(20px, 2.2vw, 28px);
-  line-height: 1.2;
-  font-weight: 800;
-  margin: 0;
-}
-.h3{
-  font-size: clamp(20px, 2.0vw, 28px);
-  line-height: 1.2;
-  font-weight: 800;
-  margin: 0 0 10px;
+.section-title span{color:var(--orange)}
+.section-subtitle{
+  color:var(--muted);
+  margin-bottom:30px;
 }
 
-.accent{ color: var(--accent); }
-
-.hero__copy{
-  margin-top: 18px;
-  display:grid;
-  gap: 14px;
-  max-width: 760px;
-}
-
-.p{
-  margin: 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.7;
-}
-.p--small{
-  font-size: 14px;
-  color: var(--muted);
-}
-
-/* Illustration placement */
-.hero__imageWrap{
-  margin-top: 26px;
-  margin-bottom: 18px;
-}
-.hero__image{
-  width: 100%;
-  max-width: 900px;
-}
-
-/* =========================
-   Cards (LEFT column)
-========================= */
+/* Cards */
 .cards{
-  margin-top: 18px;
-}
-.cards__intro{
-  margin-bottom: 14px;
-}
-
-/* Row behaves like Manus:
-   - desktop: 3 cards in a row
-   - mobile: horizontal scroll (nice)
-*/
-.cardRow{
   display:grid;
-  gap: 16px;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
 }
-
-@media (min-width: 1024px){
-  .cardRow{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 1023px){
-  .cardRow{
-    grid-auto-flow: column;
-    grid-auto-columns: 280px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .cardRow::-webkit-scrollbar{ height: 8px; }
-  .cardRow::-webkit-scrollbar-thumb{ background: #e9e9e9; border-radius: 999px; }
-  .card{ scroll-snap-align: start; }
+@media(max-width:900px){
+  .cards{grid-template-columns:1fr}
 }
 
 .card{
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
-  transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
-  cursor: default;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:24px;
+  transition:.2s;
 }
-
 .card:hover{
-  box-shadow: 0 14px 30px rgba(11,11,11,0.10);
-  transform: translateY(-2px);
-  border-color: #DDDDDD;
+  box-shadow:0 12px 24px rgba(0,0,0,.08);
+  transform:translateY(-2px);
 }
-
-.card__iconBox{
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background: #FFF1E6; /* light orange tint like Manus */
+.icon{
+  width:56px;
+  height:56px;
+  background:#FFF1E6;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-bottom: 12px;
-  color: var(--accent);
+  margin-bottom:16px;
 }
-
-.card__icon{
-  width: 40px;          /* ✅ prevents the “huge icon” issue */
-  height: 40px;
-  display:block;
+.icon svg{
+  width:28px;
+  height:28px;
+  fill:none;
+  stroke:var(--orange);
+  stroke-width:2;
 }
-
-.card__title{
-  margin: 0 0 6px;
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--text);
+.card h4{
+  margin:0 0 6px;
+  font-size:18px;
 }
-
-.card__text{
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--muted);
-}
-
-/* =========================
-   Right column form card
-========================= */
-.formCard{
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radiusXl);
-  padding: 22px;
-  box-shadow: var(--shadow);
-}
-
-.formCard__title{
-  margin: 2px 0 14px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.jotformWrap{
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: #fff;
-}
-
-/* Make iframe tall enough; adjust if your form is longer */
-.jotformFrame{
-  width: 100%;
-  height: 820px;
-  border: 0;
-  display:block;
-}
-
-.formCard__footnote{
-  margin: 12px 0 0;
-  font-size: 12px;
-  color: var(--muted2);
-  text-align: center;
-}
-
-/* =========================
-   Footer
-========================= */
-.footer{
-  border-top: 1px solid #EFEFEF;
-  background: #fff;
-  padding: 18px 0 28px;
-  margin-top: 10px;
-}
-.footer__inner{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-}
-.footer__text{
+.card p{
   margin:0;
-  font-size: 12px;
-  color: var(--muted2);
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* Right */
+.right{
+  position:relative;
+}
+.form-card{
+  position:sticky;
+  top:40px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.form-card h3{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+/* Jotform */
+.jotform-iframe{
+  width:100% !important;
+  min-height:760px;
+  border:0;
+}
+
+/* Footer */
+footer{
+  margin-top:80px;
+  padding:30px;
+  text-align:center;
+  color:#777;
+  font-size:13px;
 }
