@@ -1,278 +1,281 @@
-/* =========================
-   Base
-========================= */
+/* =========================================================
+   Cloudflare / Manus-style landing layout
+   Paste + replace for: /assets/styles.css
+   Accent: #F38020
+   Hover : #E06A0A
+   ========================================================= */
+
 :root{
-  --bg: #ffffff;
-  --text: #0B0B0B;
-  --muted: #4A4A4A;
-  --muted2: #7A7A7A;
-  --border: #E6E6E6;
-  --shadow: 0 14px 30px rgba(15, 15, 15, 0.10);
-  --shadowHover: 0 18px 40px rgba(15, 15, 15, 0.14);
-  --orange: #F38020; /* Manus orange */
-  --orangeHover: #E06A0A;
+  --accent:#F38020;
+  --accentHover:#E06A0A;
+  --text:#0B0B0B;
+  --muted:#4A4A4A;
+  --light:#7A7A7A;
+  --border:#E6E6E6;
+  --bg:#FFFFFF;
+
+  --radius:14px;
+  --radius-sm:10px;
+
+  --shadow-sm:0 6px 18px rgba(11,11,11,.08);
+  --shadow-md:0 10px 28px rgba(11,11,11,.12);
+
+  --container:1180px;
 }
 
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
-  background:var(--bg);
+  font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color:var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background:var(--bg);
 }
 
-img{ max-width:100%; height:auto; display:block; }
-a{ color:inherit; text-decoration:none; }
+img{max-width:100%;height:auto;display:block}
 
 .container{
-  width:min(1240px, calc(100% - 48px));
-  margin-inline:auto;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 24px;
 }
 
-/* =========================
-   Topbar
-========================= */
+/* Topbar */
 .topbar{
   background:#fff;
 }
 .topbar__inner{
-  height:64px;
+  padding:18px 0;
   display:flex;
   align-items:center;
-}
-.topbar__rule{
-  border-bottom:1px solid var(--border);
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
 }
 .brand__logo{
   height:22px;
   width:auto;
 }
-.brand__fallback{
-  font-weight:800;
-  letter-spacing:0.08em;
-  font-size:13px;
-  display:none;
-}
-.brand__logo[style*="display: none"] + .brand__fallback{
-  display:inline-block;
+.topbar__rule{
+  height:1px;
+  background:#efefef;
 }
 
-/* =========================
-   Layout
-========================= */
+/* Main hero section */
 .hero{
-  padding: 48px 0 36px;
+  padding:56px 0 44px;
 }
 
+/* 2-column layout (Manus-like) */
 .layout{
   display:grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
+  grid-template-columns:minmax(0, 1fr) 420px;
+  gap:40px;
   align-items:start;
 }
 
-/* Desktop: left flexible + right fixed like Manus */
-@media (min-width: 1024px){
-  .layout{
-    grid-template-columns: 1fr 480px; /* Manus-like */
-    gap: 48px;
-  }
+/* Left column width vibe */
+.left{
+  min-width:0;
+}
+
+/* Right column sticky form */
+.right{
+  position:relative;
+}
+@media (min-width:1024px){
   .right{
-    position: sticky;
-    top: 32px;
+    position:sticky;
+    top:24px;
     align-self:start;
   }
 }
 
-/* =========================
-   Typography (Manus-like scale)
-========================= */
+/* Typography */
 .h1{
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-size: clamp(38px, 4.2vw, 64px);
-  margin: 0 0 18px;
+  font-size:56px;
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  margin:0 0 14px;
+  font-weight:800;
 }
 .h2{
-  font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
-  font-size: clamp(22px, 2.2vw, 32px);
-  margin: 0 0 18px;
-}
-.h3{
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  font-size: clamp(22px, 2.2vw, 30px);
-  margin: 0 0 6px;
+  font-size:26px;
+  line-height:1.2;
+  margin:0 0 18px;
+  font-weight:800;
 }
 .p{
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.65;
-  margin: 0 0 14px;
+  font-size:15px;
+  line-height:1.65;
+  color:var(--muted);
+  margin:0 0 28px;
+  max-width:62ch;
 }
-.p--muted{
-  margin-top: 6px;
+.accent{color:var(--accent)}
+
+.h3{
+  font-size:24px;
+  line-height:1.2;
+  font-weight:800;
+  margin:0 0 10px;
+  letter-spacing:-0.01em;
 }
+
 .small{
-  color: var(--muted2);
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
+  margin:0 0 18px;
+  color:var(--muted);
+  font-size:12px;
 }
 
-.accent{ color: var(--orange); }
-
-/* =========================
-   Left column spacing
-========================= */
-.left{
-  display:flex;
-  flex-direction:column;
-  gap: 22px;
-}
-
-.hero__copy{
-  max-width: 760px;
-}
-
-/* Globe image placement/scale */
+/* Hero image block */
 .hero__image{
-  margin-top: 10px;
+  margin:34px 0 36px;
   display:flex;
   justify-content:center;
 }
 .hero__image img{
-  width: min(760px, 100%);
+  width:min(760px, 100%);
 }
 
-/* =========================
-   Deep dive + cards
-========================= */
-.deepdive{
-  margin-top: 4px;
-}
-.deepdive__head{
-  margin-bottom: 18px;
-  max-width: 900px;
-}
-
-/* Cards: keep them “normal” sized like Manus */
+/* Cards */
 .cards{
   display:grid;
-  gap: 14px;
-  grid-template-columns: 1fr;
-}
-
-/* On wider screens show 3 across */
-@media (min-width: 768px){
-  .cards{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:18px;
+  margin-top:10px;
 }
 
 .card{
-  background:#fff;
   border:1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 18px 16px;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-  box-shadow: 0 0 0 rgba(0,0,0,0);
+  border-radius:12px;
+  padding:18px;
+  background:#fff;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
 
 .card:hover{
-  box-shadow: var(--shadowHover);
-  transform: translateY(-2px);
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-sm);
+  border-color:#dcdcdc;
 }
 
 .card__icon{
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background: #FFF1E6;
+  width:46px;
+  height:46px;
+  background:#FFF1E6;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-bottom: 12px;
-  color: var(--orange);
+  color:var(--accent);
+  margin-bottom:12px;
 }
 
 .card__icon svg{
-  width: 38px;
-  height: 38px;
+  width:26px;
+  height:26px;
+  display:block;
 }
 
-.card__title{
-  margin: 0 0 6px;
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--text);
-}
-.card__text{
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--muted);
+.card h4{
+  margin:0 0 8px;
+  font-size:14px;
+  font-weight:800;
+  color:var(--text);
 }
 
-/* =========================
-   Right column: form card
-========================= */
+.card p{
+  margin:0;
+  font-size:12px;
+  line-height:1.45;
+  color:var(--muted);
+}
+
+/* NEW full-width row under cards */
+.cardsRow{
+  margin-top:24px;
+  padding-top:10px;
+}
+
+.cardsRow h3{
+  margin:0 0 8px;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-0.01em;
+}
+
+.cardsRow p{
+  margin:0;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:70ch;
+}
+
+/* Form card */
 .formCard{
   background:#fff;
   border:1px solid var(--border);
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: var(--shadow);
+  border-radius:18px;
+  padding:18px 18px 12px;
+  box-shadow:var(--shadow-md);
 }
 
 .formCard__title{
-  margin: 0 0 14px;
+  margin:6px 0 14px;
+  font-size:18px;
+  font-weight:800;
   text-align:center;
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text);
 }
 
-.formCard__fineprint{
-  margin: 12px 0 0;
-  text-align:center;
-  color: var(--muted2);
-  font-size: 12px;
-}
-
-/* Make sure iframe is not constrained by accidental parent styles */
+/* iframe sizing (keeps it inside right column) */
 .formCard iframe{
-  width: 100% !important;
+  width:100% !important;
+  border:none !important;
   display:block;
-  border:0;
 }
 
-/* =========================
-   Footer
-========================= */
+/* Footer */
 .footer{
-  border-top:1px solid var(--border);
-  padding: 16px 0 18px;
+  border-top:1px solid #efefef;
+  margin-top:36px;
 }
 .footer__inner{
-  display:flex;
-  align-items:center;
+  padding:18px 0;
+  color:#8a8a8a;
+  font-size:12px;
 }
-.footer__text{
-  color: var(--muted2);
-  font-size: 12px;
+
+/* Responsive */
+@media (max-width:1100px){
+  .layout{
+    grid-template-columns:minmax(0, 1fr) 380px;
+    gap:28px;
+  }
+  .h1{font-size:50px}
+}
+
+@media (max-width:980px){
+  .layout{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .right{
+    position:static;
+  }
+  .hero{padding:40px 0 34px}
+  .h1{font-size:44px}
+  .h2{font-size:22px}
+  .cards{
+    grid-template-columns:1fr;
+  }
+  .hero__image{
+    margin:22px 0 26px;
+  }
+}
+
+@media (max-width:480px){
+  .container{padding:0 16px}
+  .h1{font-size:36px}
+  .h2{font-size:20px}
 }
 
