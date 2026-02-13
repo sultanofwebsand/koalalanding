@@ -21,6 +21,11 @@
   --shadow-md:0 10px 28px rgba(11,11,11,.12);
 
   --container:1180px;
+
+  /* Logo controls (tweak these only if needed) */
+  --logo-scale:1.8;      /* 80% bigger */
+  --logo-nudge-x:0px;    /* try 6px or -6px if still misaligned */
+  --logo-nudge-y:0px;    /* try 1px or 2px if needed */
 }
 
 /* Base */
@@ -41,28 +46,42 @@ img{max-width:100%;height:auto;display:block}
   padding:0 24px;
 }
 
-/* Topbar */
+/* ==============================
+   Topbar / Header
+   ============================== */
+
 .topbar{
-  background:#fff;
-}
-.topbar__inner{
-  padding:18px 0;
-  display:flex;
-  align-items:center;
-}
-.brand__logo{
-  height:40px;
-  width:auto;
-}
-.topbar__rule{
-  height:1px;
-  background:#efefef;
+  background:#ffffff;
 }
 
-/* Main hero section */
-.hero{
-  padding:56px 0 44px;
+.topbar__inner{
+  display:flex;
+  align-items:center;          /* align consistently */
+  padding:32px 0 32px 0;       /* add top + bottom padding */
 }
+
+.brand{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+/* Logo sizing + alignment (NO transform scaling) */
+.brand__logo{
+  height:56px;                 /* smaller than the 80% version (approx -30%) */
+  width:auto;
+  display:block;
+  margin:0;                    /* clean */
+}
+
+/* Optional fallback */
+.brand__fallback{
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:2px;
+  color:#0B0B0B;
+}
+
 
 /* 2-column layout (Manus-like) */
 .layout{
