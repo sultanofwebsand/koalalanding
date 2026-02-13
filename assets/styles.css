@@ -21,6 +21,11 @@
   --shadow-md:0 10px 28px rgba(11,11,11,.12);
 
   --container:1180px;
+
+  /* Logo controls (tweak these only if needed) */
+  --logo-scale:1.8;      /* 80% bigger */
+  --logo-nudge-x:0px;    /* try 6px or -6px if still misaligned */
+  --logo-nudge-y:0px;    /* try 1px or 2px if needed */
 }
 
 /* Base */
@@ -45,37 +50,38 @@ img{max-width:100%;height:auto;display:block}
    Topbar / Header
    ============================== */
 
-.topbar {
-    background: #ffffff;
+.topbar{
+  background:#ffffff;
 }
 
-.topbar__inner {
-    display: flex;
-    align-items: flex-end;      /* Align logo to bottom instead of center */
-    padding: 18px 0 8px 0;      /* Bottom padding smaller */
+.topbar__inner{
+  display:flex;
+  align-items:flex-end;
+  padding:18px 0 8px 0;
 }
 
-.brand {
-    display: flex;
-    align-items: flex-end;      /* Align SVG baseline */
-    text-decoration: none;
+.brand{
+  display:flex;
+  align-items:flex-end;
+  text-decoration:none;
 }
 
-/* Larger logo (balanced with hero text) */
-.brand__logo {
-    height: 48px;               /* Slightly larger than before */
-    width: auto;
-    display: block;
+/* Logo: 80% larger + nudgable alignment */
+.brand__logo{
+  height:48px;            /* base height (scaled via transform below) */
+  width:auto;
+  display:block;
+  transform-origin:left bottom;
+  transform:translate(var(--logo-nudge-x), var(--logo-nudge-y)) scale(var(--logo-scale));
 }
 
 /* Optional fallback */
-.brand__fallback {
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: 2px;
-    color: #0B0B0B;
+.brand__fallback{
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:2px;
+  color:#0B0B0B;
 }
-
 
 /* 2-column layout (Manus-like) */
 .layout{
@@ -291,4 +297,3 @@ img{max-width:100%;height:auto;display:block}
   .h1{font-size:36px}
   .h2{font-size:20px}
 }
-
