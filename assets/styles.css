@@ -57,7 +57,7 @@ img{max-width:100%;height:auto;display:block}
 .topbar__inner{
   display:flex;
   align-items:center;          /* align consistently */
-  padding:32px 0 24px 0;       /* add top + bottom padding */
+  padding:32px 0 32px 0;       /* add top + bottom padding */
 }
 
 .brand{
