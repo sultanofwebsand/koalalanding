@@ -56,23 +56,22 @@ img{max-width:100%;height:auto;display:block}
 
 .topbar__inner{
   display:flex;
-  align-items:flex-end;
-  padding:18px 0 8px 0;
+  align-items:center;          /* align consistently */
+  padding:22px 0 14px 0;       /* add top + bottom padding */
 }
 
 .brand{
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   text-decoration:none;
 }
 
-/* Logo: 80% larger + nudgable alignment */
+/* Logo sizing + alignment (NO transform scaling) */
 .brand__logo{
-  height:48px;            /* base height (scaled via transform below) */
+  height:56px;                 /* smaller than the 80% version (approx -30%) */
   width:auto;
   display:block;
-  transform-origin:left bottom;
-  transform:translate(var(--logo-nudge-x), var(--logo-nudge-y)) scale(var(--logo-scale));
+  margin:0;                    /* clean */
 }
 
 /* Optional fallback */
@@ -82,6 +81,7 @@ img{max-width:100%;height:auto;display:block}
   letter-spacing:2px;
   color:#0B0B0B;
 }
+
 
 /* 2-column layout (Manus-like) */
 .layout{
