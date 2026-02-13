@@ -41,28 +41,41 @@ img{max-width:100%;height:auto;display:block}
   padding:0 24px;
 }
 
-/* Topbar */
-.topbar{
-  background:#fff;
-}
-.topbar__inner{
-  padding:18px 0;
-  display:flex;
-  align-items:center;
-}
-.brand__logo{
-  height:22px;
-  width:auto;
-}
-.topbar__rule{
-  height:1px;
-  background:#efefef;
+/* ==============================
+   Topbar / Header
+   ============================== */
+
+.topbar {
+    background: #ffffff;
 }
 
-/* Main hero section */
-.hero{
-  padding:56px 0 44px;
+.topbar__inner {
+    display: flex;
+    align-items: center;      /* vertically centers logo */
+    padding: 22px 0;          /* slightly more breathing room */
 }
+
+.brand {
+    display: flex;
+    align-items: center;      /* aligns logo perfectly */
+    text-decoration: none;
+}
+
+/* 80% larger logo */
+.brand__logo {
+    height: 44px;             /* was ~24px before */
+    width: auto;
+    display: block;
+}
+
+/* Fallback text (if SVG fails) */
+.brand__fallback {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #0B0B0B;
+}
+
 
 /* 2-column layout (Manus-like) */
 .layout{
