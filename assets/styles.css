@@ -51,27 +51,27 @@ img{max-width:100%;height:auto;display:block}
 
 .topbar__inner {
     display: flex;
-    align-items: center;      /* vertically centers logo */
-    padding: 22px 0;          /* slightly more breathing room */
+    align-items: flex-end;      /* Align logo to bottom instead of center */
+    padding: 18px 0 8px 0;      /* Bottom padding smaller */
 }
 
 .brand {
     display: flex;
-    align-items: center;      /* aligns logo perfectly */
+    align-items: flex-end;      /* Align SVG baseline */
     text-decoration: none;
 }
 
-/* 80% larger logo */
+/* Larger logo (balanced with hero text) */
 .brand__logo {
-    height: 44px;             /* was ~24px before */
+    height: 48px;               /* Slightly larger than before */
     width: auto;
     display: block;
 }
 
-/* Fallback text (if SVG fails) */
+/* Optional fallback */
 .brand__fallback {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 2px;
     color: #0B0B0B;
 }
