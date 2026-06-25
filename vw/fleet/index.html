@@ -399,25 +399,41 @@
                             <input class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol text-dark-petrol"
                                 type="email" id="email_address" name="q3_email" placeholder="Email address" autocomplete="email" required>
                         </div>
+<div class="form-field col-span-6 pt-[1rem]">
+    <label for="decision" class="block text-white font-semibold pb-[0.75rem]">
+        Are you a decision maker, or do you contribute to the acquisition process of fleet vehicles in your company?
+    </label>
 
-                        <div class="form-field col-span-6 lg:col-span-3">
-                            <label for="decision" class="sr-only">Decision maker</label>
-                            <select id="decision" name="q5_decision" required class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] px-[1rem] text-dark-petrol">
-                                <option selected disabled value="">Decision maker?</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
+    <select
+        id="decision"
+        name="q5_decision"
+        required
+        class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] px-[1rem] text-dark-petrol">
 
-                        <div class="form-field col-span-6 lg:col-span-3">
-                            <label for="interest" class="sr-only">Area of interest</label>
-                            <select id="interest" name="q6_interest" required class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] px-[1rem] text-dark-petrol">
-                                <option selected disabled value="">Area of interest</option>
-                                <option value="General Fleet">General Fleet</option>
-                                <option value="Light Commercial Vehicle">Light Commercial Vehicle</option>
-                                <option value="Electric Vehicles">Electric Vehicles</option>
-                            </select>
-                        </div>
+        <option selected disabled value="">Select an option</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+
+    </select>
+</div>
+<div class="form-field col-span-6 pt-[1rem]">
+    <label for="interest" class="block text-white font-semibold pb-[0.75rem]">
+        What is your area of interest in Fleet?
+    </label>
+
+    <select
+        id="interest"
+        name="q6_interest"
+        required
+        class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] px-[1rem] text-dark-petrol">
+
+        <option selected disabled value="">Select an area of interest</option>
+        <option value="General Fleet">General Fleet</option>
+        <option value="Light Commercial Vehicle">Light Commercial Vehicle</option>
+        <option value="Electric Vehicles">Electric Vehicles</option>
+
+    </select>
+</div>
 
                         <div class="form-field col-span-6 pt-[1rem] text-white">
                             <label class="flex items-start gap-[0.8rem]">
