@@ -394,61 +394,134 @@
                                 type="text" id="last_name" name="q4_name[last]" placeholder="Last name" autocomplete="family-name" required>
                         </div>
 
-                        <div class="form-field col-span-6">
-                            <label for="email_address" class="sr-only">Email address</label>
-                            <input class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol text-dark-petrol"
-                                type="email" id="email_address" name="q3_email" placeholder="Email address" autocomplete="email" required>
-                        </div>
-<div class="form-field col-span-6 pt-[1rem]">
-    <label for="decision" class="block text-white font-semibold pb-[0.75rem]">
+                        ```html
+<div class="form-field col-span-6">
+    <label for="email_address" class="sr-only">Email address</label>
+    <input
+        class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol text-dark-petrol"
+        type="email"
+        id="email_address"
+        name="q3_email"
+        placeholder="Email address"
+        autocomplete="email"
+        required>
+</div>
+
+<!-- Decision Maker -->
+
+<div class="form-field col-span-6 pt-[1.5rem]">
+    <label for="decision" class="block text-white font-semibold mb-[0.75rem]">
         Are you a decision maker, or do you contribute to the acquisition process of fleet vehicles in your company?
     </label>
 
-    <select
-        id="decision"
-        name="q5_decision"
-        required
-        class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] px-[1rem] text-dark-petrol">
+    <div class="relative">
 
-        <option selected disabled value="">Select an option</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
+        <select
+            id="decision"
+            name="q5_decision"
+            required
+            class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] pl-[1rem] pr-[4rem] text-dark-petrol">
 
-    </select>
+            <option selected disabled value="">Select an option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+
+        </select>
+
+        <svg
+            class="pointer-events-none absolute right-[1.25rem] top-1/2 -translate-y-1/2 h-5 w-5 text-silver"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"/>
+
+        </svg>
+
+    </div>
 </div>
-<div class="form-field col-span-6 pt-[1rem]">
-    <label for="interest" class="block text-white font-semibold pb-[0.75rem]">
+
+<!-- Area of Interest -->
+
+<div class="form-field col-span-6 pt-[1.5rem]">
+    <label for="interest" class="block text-white font-semibold mb-[0.75rem]">
         What is your area of interest in Fleet?
     </label>
 
-    <select
-        id="interest"
-        name="q6_interest"
-        required
-        class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] px-[1rem] text-dark-petrol">
+    <div class="relative">
 
-        <option selected disabled value="">Select an area of interest</option>
-        <option value="General Fleet">General Fleet</option>
-        <option value="Light Commercial Vehicle">Light Commercial Vehicle</option>
-        <option value="Electric Vehicles">Electric Vehicles</option>
+        <select
+            id="interest"
+            name="q6_interest"
+            required
+            class="w-full appearance-none bg-white rounded-[1rem] py-[1rem] pl-[1rem] pr-[4rem] text-dark-petrol">
 
-    </select>
+            <option selected disabled value="">Select an area of interest</option>
+            <option value="General Fleet">General Fleet</option>
+            <option value="Light Commercial Vehicle">Light Commercial Vehicle</option>
+            <option value="Electric Vehicles">Electric Vehicles</option>
+
+        </select>
+
+        <svg
+            class="pointer-events-none absolute right-[1.25rem] top-1/2 -translate-y-1/2 h-5 w-5 text-silver"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"/>
+
+        </svg>
+
+    </div>
+
 </div>
 
-                        <div class="form-field col-span-6 pt-[1rem] text-white">
-                            <label class="flex items-start gap-[0.8rem]">
-                                <input type="checkbox" name="q8_consent[]" value="I consent" required class="mt-[0.4rem]">
-                                <span>I consent</span>
-                            </label>
-                        </div>
+<!-- Consent -->
 
-                        <div class="submit col-span-6 flex justify-center pt-[2rem]">
-                            <input
-                                class="w-[28rem] h-[5rem] bg-bright-blue p-4 rounded-[1rem] text-dark-petrol text-center font-bold cursor-pointer"
-                                type="submit"
-                                value="Download our report">
-                        </div>
+<div class="form-field col-span-6 pt-[1.5rem]">
 
+    <p class="text-white font-semibold mb-[0.75rem]">
+        Consent
+    </p>
+
+    <label class="flex items-start gap-[0.75rem] text-white leading-relaxed">
+
+        <input
+            type="checkbox"
+            name="q8_consent[]"
+            value="I consent"
+            required
+            class="mt-[0.3rem] h-5 w-5 accent-bright-blue">
+
+        <span>
+            I consent to Volkswagen Financial Services contacting me regarding this report.
+        </span>
+
+    </label>
+
+</div>
+
+<!-- Submit -->
+
+<div class="submit col-span-6 flex justify-center pt-[2rem]">
+
+    <input
+        class="w-[28rem] h-[5rem] bg-bright-blue rounded-[1rem] text-dark-petrol font-bold cursor-pointer transition hover:opacity-90"
+        type="submit"
+        value="Download our report">
+
+</div>
                     </form>
 
                 </div>
