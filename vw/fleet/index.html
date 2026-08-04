@@ -673,7 +673,7 @@
                                 </div>
                                 <div
                                     class="grid grid-cols-1 col-span-4 my-[1rem]"
-                                    role="group"
+                                    role="radiogroup"
                                     aria-labelledby="areas_of_interest-label"
                                     aria-describedby="areas_of_interest-error"
                                 >
@@ -687,7 +687,7 @@
                                         Which areas of fleet management are you
                                         most interested in?
                                         <span class="italic"
-                                            >(Select all that apply)</span
+                                            >(Select one)</span
                                         >
                                     </p>
                                     <div
@@ -696,9 +696,9 @@
                                     >
                                         <div class="col-span-4 lg:col-span-2">
                                             <input
-                                                type="checkbox"
+                                                type="radio"
                                                 id="general_fleet_management"
-                                                name="q9_areasOf[]"
+                                                name="q14_areasOf14"
                                                 value="General Fleet Management"
                                                 class="dm-checkbox-input"
                                             />
@@ -715,9 +715,9 @@
                                         </div>
                                         <div class="col-span-4 lg:col-span-2">
                                             <input
-                                                type="checkbox"
+                                                type="radio"
                                                 id="light_commercial_vehicles"
-                                                name="q9_areasOf[]"
+                                                name="q14_areasOf14"
                                                 value="Light Commercial Vehicles"
                                                 class="dm-checkbox-input"
                                             />
@@ -734,9 +734,9 @@
                                         </div>
                                         <div class="col-span-4 lg:col-span-2">
                                             <input
-                                                type="checkbox"
+                                                type="radio"
                                                 id="electric_vehicles"
-                                                name="q9_areasOf[]"
+                                                name="q14_areasOf14"
                                                 value="Electric Vehicles (EVs)"
                                                 class="dm-checkbox-input"
                                             />
@@ -753,9 +753,9 @@
                                         </div>
                                         <div class="col-span-4 lg:col-span-2">
                                             <input
-                                                type="checkbox"
+                                                type="radio"
                                                 id="vehicle_rentals"
-                                                name="q9_areasOf[]"
+                                                name="q14_areasOf14"
                                                 value="Vehicle Rentals"
                                                 class="dm-checkbox-input"
                                             />
@@ -792,7 +792,7 @@
                                         What are the main challenges you face
                                         when managing your fleet?
                                         <span class="italic"
-                                            >(Select all that apply)</span
+                                            >(Select one)</span
                                         >
                                     </p>
                                     <div
@@ -1268,7 +1268,7 @@
                         </p>
                         <div class="grid grid-cols-1 w-[13rem] pb-[2rem]">
                             <a
-                                href="https://www2.vwfsfleet.co.uk/book-a-call"
+                                href="https://www2.vwfsfleet.co.uk/book-a-call?utm_campaign=CA_Brand_Koala_DG_Q2_2026"
                                 target="_blank"
                                 class="text-bright-blue col-start-1 row-start-1 underline"
                                 >Book a call</a
@@ -1560,15 +1560,15 @@
                         )
                     }
 
-                    // Areas of interest checkboxes
-                    var areasChecked = form.querySelectorAll(
-                        'input[name="q9_areasOf[]"]:checked'
+                    // Areas of interest single choice
+                    var areaSelected = form.querySelector(
+                        'input[name="q14_areasOf14"]:checked'
                     )
-                    if (areasChecked.length === 0) {
+                    if (!areaSelected) {
                         setGroupError(
                             'areas_of_interest-group',
                             'areas_of_interest',
-                            'Please select at least one area of interest.'
+                            'Please select an area of interest.'
                         )
                         valid = false
                     } else {
@@ -1659,7 +1659,7 @@
                 )
 
                 form.querySelectorAll(
-                    'input[name="q9_areasOf[]"]'
+                    'input[name="q14_areasOf14"]'
                 ).forEach(function (el) {
                     el.addEventListener('change', function () {
                         setGroupError(
