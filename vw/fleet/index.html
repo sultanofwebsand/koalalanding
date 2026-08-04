@@ -492,9 +492,7 @@
                                 <input type="hidden" name="submitSource" value="external" />
                                 <input type="hidden" name="website" value="" />
                                 <div class="col-span-4 lg:col-span-2">
-                                    <label for="first_name" class="sr-only"
-                                        >First name</label
-                                    >
+                                    <label for="first_name" class="block mb-[0.5rem] font-bold text-white">First name</label>
                                     <input
                                         type="text"
                                         id="first_name"
@@ -513,9 +511,7 @@
                                 <div
                                     class="grid grid-cols-1 col-span-4 lg:col-span-2"
                                 >
-                                    <label for="last_name" class="sr-only"
-                                        >Last name</label
-                                    >
+                                    <label for="last_name" class="block mb-[0.5rem] font-bold text-white">Last name</label>
                                     <input
                                         type="text"
                                         id="last_name"
@@ -532,9 +528,7 @@
                                     ></span>
                                 </div>
                                 <div class="col-span-4 lg:col-span-2">
-                                    <label for="email" class="sr-only"
-                                        >Email address</label
-                                    >
+                                    <label for="email" class="block mb-[0.5rem] font-bold text-white">Email address</label>
                                     <input
                                         type="email"
                                         id="email"
@@ -550,12 +544,9 @@
                                         aria-live="polite"
                                     ></span>
                                 </div>
-                                <div
-                                    class="grid grid-cols-1 col-span-4 lg:col-span-2 mb-[1rem]"
-                                >
-                                    <label for="fleet_size" class="sr-only"
-                                        >Fleet size</label
-                                    >
+                                <div class="col-span-4 lg:col-span-2 mb-[1rem]">
+                                    <label for="fleet_size" class="block mb-[0.5rem] font-bold text-white">Fleet size</label>
+                                    <div class="grid grid-cols-1">
                                     <select
                                         id="fleet_size"
                                         name="q13_fleetSize"
@@ -605,6 +596,7 @@
                                             stroke-linecap="round"
                                         />
                                     </svg>
+                                    </div>
                                     <span
                                         class="field-error"
                                         id="fleet_size-error"
