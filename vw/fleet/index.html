@@ -416,8 +416,7 @@
         <!-- End Google Tag Manager -->
     </head>
 
-    <!-- Jotform mapping synced to form 262012052865046 redirect rules supplied 2026-09-02 -->
-        <body class="overflow-x-clip text-[1.8rem] leading-[1.5]">
+    <body class="overflow-x-clip text-[1.8rem] leading-[1.5]">
         <!-- Google Tag Manager (noscript) -->
         <noscript>
             <iframe
@@ -562,9 +561,9 @@
                                     <span class="field-error" id="decision_maker-error" aria-live="polite"></span>
                                 </div>
 
-                                <div class="grid grid-cols-1 col-span-4 my-[1rem]" role="radiogroup" aria-labelledby="download-label" aria-describedby="download-error">
+                                <div class="grid grid-cols-1 col-span-4 my-[1rem]" role="group" aria-labelledby="download-label" aria-describedby="download-error">
                                     <p class="font-bold text-white" id="download-label">Select your report to&nbsp;download</p>
-                                    <p class="text-white">What do you want to&nbsp;download? <span class="italic">(Select one)</span></p>
+                                    <p class="text-white">What do you want to&nbsp;download?</p>
                                     <div class="grid grid-cols-4 gap-[1rem] mt-[2rem] lg:mt-[1rem]" id="download-group">
                                         <div class="col-span-4 lg:col-span-12">
                                             <input type="radio" id="download_fleet_resiliance" name="q17_selectYour[]" value="Building Fleet Resilience" class="dm-checkbox-input" />
@@ -1076,13 +1075,13 @@
         <script>
             ;(function () {
                 var form = document.getElementById('vwfs-form')
-                var submitFrame = document.getElementById('jotform-submit-frame')
                 if (!form) return
 
                 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                var submissionStarted = false
-                var redirectDone = false
+                var submitFrame = document.getElementById('jotform-submit-frame')
+                var redirectPending = false
                 var redirectUrl = ''
+                var redirectTimer = null
 
                 var REPORT_URLS = {
                     '6 Pillars': 'https://36343baa83.sdkhosting.net/pub/k4k4/pkoc5yl3/rl1/dq7/b1g/EB1415772_VWFS_Fleet_LCV_White_Paper_FINAL%20010626.pdf',
@@ -1124,70 +1123,47 @@
                 function validateForm() {
                     var valid = true
                     var firstName = document.getElementById('first_name').value.trim()
+                    if (!firstName) { setError('first_name', 'Please enter your first name.'); valid = false }
+                    else setError('first_name', '')
+
                     var lastName = document.getElementById('last_name').value.trim()
+                    if (!lastName) { setError('last_name', 'Please enter your last name.'); valid = false }
+                    else setError('last_name', '')
+
                     var email = document.getElementById('email').value.trim()
+                    if (!email) { setError('email', 'Please enter your email address.'); valid = false }
+                    else if (!EMAIL_RE.test(email)) { setError('email', 'Please enter a valid email address.'); valid = false }
+                    else setError('email', '')
+
                     var fleet = document.getElementById('fleet_size')
-
-                    setError('first_name', firstName ? '' : 'Please enter your first name.')
-                    if (!firstName) valid = false
-                    setError('last_name', lastName ? '' : 'Please enter your last name.')
-                    if (!lastName) valid = false
-
-                    if (!email) {
-                        setError('email', 'Please enter your email address.')
-                        valid = false
-                    } else if (!EMAIL_RE.test(email)) {
-                        setError('email', 'Please enter a valid email address.')
-                        valid = false
-                    } else {
-                        setError('email', '')
-                    }
-
-                    if (!fleet.value || fleet.selectedIndex === 0) {
-                        setError('fleet_size', 'Please select your fleet size.')
-                        valid = false
-                    } else {
-                        setError('fleet_size', '')
-                    }
+                    if (!fleet.value || fleet.selectedIndex === 0) { setError('fleet_size', 'Please select your fleet size.'); valid = false }
+                    else setError('fleet_size', '')
 
                     var decision = form.querySelector('input[name="q5_decisionMaking"]:checked')
-                    if (!decision) {
-                        setGroupError('decision_maker-group', 'decision_maker', 'Please select an option.')
-                        valid = false
-                    } else {
-                        setGroupError('decision_maker-group', 'decision_maker', '')
-                    }
+                    if (!decision) { setGroupError('decision_maker-group', 'decision_maker', 'Please select an option.'); valid = false }
+                    else setGroupError('decision_maker-group', 'decision_maker', '')
 
                     var report = form.querySelector('input[name="q17_selectYour[]"]:checked')
-                    if (!report) {
-                        setGroupError('download-group', 'download', 'Please select a report.')
-                        valid = false
-                    } else {
-                        setGroupError('download-group', 'download', '')
-                    }
+                    if (!report) { setGroupError('download-group', 'download', 'Please select at least one report.'); valid = false }
+                    else setGroupError('download-group', 'download', '')
 
                     var optIn = form.querySelector('input[name="q11_idLike11"]:checked')
-                    if (!optIn) {
-                        setGroupError('email_opt_in-group', 'email_opt_in', 'Please indicate your email preference.')
-                        valid = false
-                    } else {
-                        setGroupError('email_opt_in-group', 'email_opt_in', '')
-                    }
+                    if (!optIn) { setGroupError('email_opt_in-group', 'email_opt_in', 'Please indicate your email preference.'); valid = false }
+                    else setGroupError('email_opt_in-group', 'email_opt_in', '')
+
                     return valid
                 }
 
-                function goToReport() {
-                    if (redirectDone || !redirectUrl) return
-                    redirectDone = true
+                function doRedirect() {
+                    if (!redirectPending || !redirectUrl) return
+                    redirectPending = false
+                    if (redirectTimer) clearTimeout(redirectTimer)
                     window.location.assign(redirectUrl)
                 }
 
                 if (submitFrame) {
                     submitFrame.addEventListener('load', function () {
-                        if (submissionStarted) {
-                            // Jotform has returned a response in the hidden frame; now send the visitor to the selected report.
-                            setTimeout(goToReport, 150)
-                        }
+                        if (redirectPending) doRedirect()
                     })
                 }
 
@@ -1200,17 +1176,9 @@
                     }
 
                     var report = form.querySelector('input[name="q17_selectYour[]"]:checked')
-                    redirectUrl = report ? REPORT_URLS[report.value] || '' : ''
-                    submissionStarted = true
-
-                    var button = form.querySelector('button[type="submit"]')
-                    if (button) {
-                        button.disabled = true
-                        button.textContent = 'Please wait...'
-                    }
-
-                    // Fallback in case a browser does not expose the cross-origin iframe load event reliably.
-                    setTimeout(goToReport, 2500)
+                    redirectUrl = report ? (REPORT_URLS[report.value] || '') : ''
+                    redirectPending = !!redirectUrl
+                    if (redirectPending) redirectTimer = setTimeout(doRedirect, 3500)
                 })
 
                 ;['first_name', 'last_name', 'email'].forEach(function (id) {
