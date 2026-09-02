@@ -416,7 +416,8 @@
         <!-- End Google Tag Manager -->
     </head>
 
-    <body class="overflow-x-clip text-[1.8rem] leading-[1.5]">
+    <!-- Jotform mapping synced to form 262012052865046 redirect rules supplied 2026-09-02 -->
+        <body class="overflow-x-clip text-[1.8rem] leading-[1.5]">
         <!-- Google Tag Manager (noscript) -->
         <noscript>
             <iframe
@@ -505,6 +506,7 @@
                                 class="grid grid-cols-4 gap-[1rem]"
                                 action="https://eu-submit.jotform.com/submit/262012052865046"
                                 method="post"
+                                target="jotform-submit-frame"
                                 accept-charset="utf-8"
                                 autocomplete="on"
                                 novalidate
@@ -560,24 +562,24 @@
                                     <span class="field-error" id="decision_maker-error" aria-live="polite"></span>
                                 </div>
 
-                                <div class="grid grid-cols-1 col-span-4 my-[1rem]" role="group" aria-labelledby="download-label" aria-describedby="download-error">
+                                <div class="grid grid-cols-1 col-span-4 my-[1rem]" role="radiogroup" aria-labelledby="download-label" aria-describedby="download-error">
                                     <p class="font-bold text-white" id="download-label">Select your report to&nbsp;download</p>
-                                    <p class="text-white">What do you want to&nbsp;download?</p>
+                                    <p class="text-white">What do you want to&nbsp;download? <span class="italic">(Select one)</span></p>
                                     <div class="grid grid-cols-4 gap-[1rem] mt-[2rem] lg:mt-[1rem]" id="download-group">
                                         <div class="col-span-4 lg:col-span-12">
-                                            <input type="checkbox" id="download_fleet_resiliance" name="q17_selectYour[]" value="Building Fleet Resilience" class="dm-checkbox-input" />
+                                            <input type="radio" id="download_fleet_resiliance" name="q17_selectYour[]" value="Building Fleet Resilience" class="dm-checkbox-input" />
                                             <label for="download_fleet_resiliance" class="dm-checkbox-label w-full">
                                                 <span class="text-dark-petrol font-medium"><span class="font-bold">Building fleet resilience in an uncertain&nbsp;world.</span><br>Five decision principles to help you navigate cost, electrification and operational risk.</span>
                                             </label>
                                         </div>
                                         <div class="col-span-4 lg:col-span-12">
-                                            <input type="checkbox" id="fleet_electrification" name="q17_selectYour[]" value="Fleet Electricification" class="dm-checkbox-input" />
+                                            <input type="radio" id="fleet_electrification" name="q17_selectYour[]" value="Fleet Electricification" class="dm-checkbox-input" />
                                             <label for="fleet_electrification" class="dm-checkbox-label w-full">
                                                 <span class="text-dark-petrol font-medium"><span class="font-bold">Fleet electrification isn't just a vehicle&nbsp;decision.</span><br>What it takes to run a successful transition &ndash; from real-world experiences and deep&nbsp;expertise.</span>
                                             </label>
                                         </div>
                                         <div class="col-span-4 lg:col-span-12">
-                                            <input type="checkbox" id="six_pillars" name="q17_selectYour[]" value="6 Pillars" class="dm-checkbox-input" />
+                                            <input type="radio" id="six_pillars" name="q17_selectYour[]" value="6 Pillars" class="dm-checkbox-input" />
                                             <label for="six_pillars" class="dm-checkbox-label w-full">
                                                 <span class="text-dark-petrol font-medium"><span class="font-bold">6 pillars of successful LCV risk&nbsp;management.</span><br>How the best van operators are managing risk &ndash; and how to use those pillars in your&nbsp;fleet.</span>
                                             </label>
@@ -600,6 +602,7 @@
                                     <button type="submit" value="Submit" class="bg-[var(--color-bright-blue)] rounded-xl text-petrol font-semibold py-6 px-20 cursor-pointer hover:bg-[var(--color-bright-green)] transition-all duration-300">Get our report</button>
                                 </div>
                             </form>
+                            <iframe name="jotform-submit-frame" id="jotform-submit-frame" title="Jotform submission" style="display:none;width:0;height:0;border:0"></iframe>
                         </div>
                     </div>
                 </div>
@@ -1073,9 +1076,19 @@
         <script>
             ;(function () {
                 var form = document.getElementById('vwfs-form')
+                var submitFrame = document.getElementById('jotform-submit-frame')
                 if (!form) return
 
                 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                var submissionStarted = false
+                var redirectDone = false
+                var redirectUrl = ''
+
+                var REPORT_URLS = {
+                    '6 Pillars': 'https://36343baa83.sdkhosting.net/pub/k4k4/pkoc5yl3/rl1/dq7/b1g/EB1415772_VWFS_Fleet_LCV_White_Paper_FINAL%20010626.pdf',
+                    'Building Fleet Resilience': 'https://36343baa83.sdkhosting.net/pub/k4k4/pkoc5yl3/nzh/y3i/zi9/EB1421783_VWFS_Fleet_Brand_White_Paper_R1%20010626.pdf',
+                    'Fleet Electricification': 'https://36343baa83.sdkhosting.net/pub/k4k4/pkoc5yl3/hak/68d/6zb/EB141577_VWFS_Fleet_EV_White_Paper_FINAL%20010626.pdf'
+                }
 
                 function setError(id, message) {
                     var el = document.getElementById(id + '-error')
@@ -1097,10 +1110,7 @@
                     var el = document.getElementById(errorId + '-error')
                     if (el) el.textContent = message
                     if (group) {
-                        var target =
-                            group.closest(
-                                '[role="radiogroup"], [role="group"]'
-                            ) || group
+                        var target = group.closest('[role="radiogroup"], [role="group"]') || group
                         if (message) {
                             group.classList.add('group-invalid')
                             target.setAttribute('aria-invalid', 'true')
@@ -1113,31 +1123,16 @@
 
                 function validateForm() {
                     var valid = true
-
-                    // First name
-                    var firstName = document
-                        .getElementById('first_name')
-                        .value.trim()
-                    if (!firstName) {
-                        setError('first_name', 'Please enter your first name.')
-                        valid = false
-                    } else {
-                        setError('first_name', '')
-                    }
-
-                    // Last name
-                    var lastName = document
-                        .getElementById('last_name')
-                        .value.trim()
-                    if (!lastName) {
-                        setError('last_name', 'Please enter your last name.')
-                        valid = false
-                    } else {
-                        setError('last_name', '')
-                    }
-
-                    // Email
+                    var firstName = document.getElementById('first_name').value.trim()
+                    var lastName = document.getElementById('last_name').value.trim()
                     var email = document.getElementById('email').value.trim()
+                    var fleet = document.getElementById('fleet_size')
+
+                    setError('first_name', firstName ? '' : 'Please enter your first name.')
+                    if (!firstName) valid = false
+                    setError('last_name', lastName ? '' : 'Please enter your last name.')
+                    if (!lastName) valid = false
+
                     if (!email) {
                         setError('email', 'Please enter your email address.')
                         valid = false
@@ -1148,133 +1143,93 @@
                         setError('email', '')
                     }
 
-                    // Fleet size
-                    var fleetSize = document.getElementById('fleet_size').value
-                    if (
-                        !fleetSize ||
-                        document.getElementById('fleet_size').selectedIndex ===
-                            0
-                    ) {
+                    if (!fleet.value || fleet.selectedIndex === 0) {
                         setError('fleet_size', 'Please select your fleet size.')
                         valid = false
                     } else {
                         setError('fleet_size', '')
                     }
 
-                    // Decision maker radio
-                    var decisionMakerChecked = form.querySelector(
-                        'input[name="q5_decisionMaking"]:checked'
-                    )
-                    if (!decisionMakerChecked) {
-                        setGroupError(
-                            'decision_maker-group',
-                            'decision_maker',
-                            'Please select an option.'
-                        )
+                    var decision = form.querySelector('input[name="q5_decisionMaking"]:checked')
+                    if (!decision) {
+                        setGroupError('decision_maker-group', 'decision_maker', 'Please select an option.')
                         valid = false
                     } else {
-                        setGroupError(
-                            'decision_maker-group',
-                            'decision_maker',
-                            ''
-                        )
+                        setGroupError('decision_maker-group', 'decision_maker', '')
                     }
-                    // Report selection checkboxes
-                    var reportsChecked = form.querySelectorAll(
-                        'input[name="q17_selectYour[]"]:checked'
-                    )
-                    if (reportsChecked.length === 0) {
-                        setGroupError(
-                            'download-group',
-                            'download',
-                            'Please select at least one report.'
-                        )
+
+                    var report = form.querySelector('input[name="q17_selectYour[]"]:checked')
+                    if (!report) {
+                        setGroupError('download-group', 'download', 'Please select a report.')
                         valid = false
                     } else {
                         setGroupError('download-group', 'download', '')
                     }
 
-                    // Email opt-in radio
-                    var emailOptInChecked = form.querySelector(
-                        'input[name="q11_idLike11"]:checked'
-                    )
-                    if (!emailOptInChecked) {
-                        setGroupError(
-                            'email_opt_in-group',
-                            'email_opt_in',
-                            'Please indicate your email preference.'
-                        )
+                    var optIn = form.querySelector('input[name="q11_idLike11"]:checked')
+                    if (!optIn) {
+                        setGroupError('email_opt_in-group', 'email_opt_in', 'Please indicate your email preference.')
                         valid = false
                     } else {
                         setGroupError('email_opt_in-group', 'email_opt_in', '')
                     }
-
                     return valid
+                }
+
+                function goToReport() {
+                    if (redirectDone || !redirectUrl) return
+                    redirectDone = true
+                    window.location.assign(redirectUrl)
+                }
+
+                if (submitFrame) {
+                    submitFrame.addEventListener('load', function () {
+                        if (submissionStarted) {
+                            // Jotform has returned a response in the hidden frame; now send the visitor to the selected report.
+                            setTimeout(goToReport, 150)
+                        }
+                    })
                 }
 
                 form.addEventListener('submit', function (e) {
                     if (!validateForm()) {
                         e.preventDefault()
-                        // Scroll to the first error
-                        var firstError = form.querySelector(
-                            '.field-error:not(:empty)'
-                        )
-                        if (firstError)
-                            firstError.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'center',
-                            })
+                        var firstError = form.querySelector('.field-error:not(:empty)')
+                        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                        return
                     }
+
+                    var report = form.querySelector('input[name="q17_selectYour[]"]:checked')
+                    redirectUrl = report ? REPORT_URLS[report.value] || '' : ''
+                    submissionStarted = true
+
+                    var button = form.querySelector('button[type="submit"]')
+                    if (button) {
+                        button.disabled = true
+                        button.textContent = 'Please wait...'
+                    }
+
+                    // Fallback in case a browser does not expose the cross-origin iframe load event reliably.
+                    setTimeout(goToReport, 2500)
                 })
 
-                // Clear individual field errors on input/change
                 ;['first_name', 'last_name', 'email'].forEach(function (id) {
                     var el = document.getElementById(id)
-                    if (el)
-                        el.addEventListener('input', function () {
-                            setError(id, '')
-                        })
+                    if (el) el.addEventListener('input', function () { setError(id, '') })
                 })
 
                 var fleetSizeEl = document.getElementById('fleet_size')
-                if (fleetSizeEl)
-                    fleetSizeEl.addEventListener('change', function () {
-                        setError('fleet_size', '')
-                    })
+                if (fleetSizeEl) fleetSizeEl.addEventListener('change', function () { setError('fleet_size', '') })
 
-                form.querySelectorAll('input[name="q5_decisionMaking"]').forEach(
-                    function (el) {
-                        el.addEventListener('change', function () {
-                            setGroupError(
-                                'decision_maker-group',
-                                'decision_maker',
-                                ''
-                            )
-                        })
-                    }
-                )
-                form.querySelectorAll(
-                    'input[name="q17_selectYour[]"]'
-                ).forEach(function (el) {
-                    el.addEventListener('change', function () {
-                        setGroupError('download-group', 'download', '')
-                    })
+                form.querySelectorAll('input[name="q5_decisionMaking"]').forEach(function (el) {
+                    el.addEventListener('change', function () { setGroupError('decision_maker-group', 'decision_maker', '') })
                 })
-                        })
-                    }
-                )
-
-                form.querySelectorAll('input[name="q11_idLike11"]').forEach(
-                    function (el) {
-                        el.addEventListener('change', function () {
-                            setGroupError(
-                                'email_opt_in-group',
-                                'email_opt_in',
-                                ''
-                            )
-                        })
-                    }
-                )
+                form.querySelectorAll('input[name="q17_selectYour[]"]').forEach(function (el) {
+                    el.addEventListener('change', function () { setGroupError('download-group', 'download', '') })
+                })
+                form.querySelectorAll('input[name="q11_idLike11"]').forEach(function (el) {
+                    el.addEventListener('change', function () { setGroupError('email_opt_in-group', 'email_opt_in', '') })
+                })
             })()
         </script>
     </body>
