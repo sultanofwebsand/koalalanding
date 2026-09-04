@@ -96,6 +96,50 @@
                 font-family: VWAGTheSansBold, Arial, sans-serif;
                 font-weight: 700;
             }
+
+            /* Keep form typography consistent with the VWFS page typography */
+            #vwfs-form,
+            #vwfs-form input,
+            #vwfs-form select,
+            #vwfs-form button,
+            #vwfs-form label,
+            #vwfs-form p,
+            #vwfs-form span {
+                font-family: VWAGTheSansRegular, Arial, sans-serif;
+            }
+
+            #vwfs-form strong,
+            #vwfs-form .font-bold,
+            #vwfs-form .font-semibold {
+                font-family: VWAGTheSansBold, Arial, sans-serif;
+            }
+
+            /* Force the VWFS typeface across ALL visible page content */
+            body,
+            body * {
+                font-family: VWAGTheSansRegular, Arial, sans-serif !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            strong,
+            b,
+            .font-bold,
+            .font-semibold {
+                font-family: VWAGTheSansBold, Arial, sans-serif !important;
+            }
+
+            input,
+            select,
+            textarea,
+            button,
+            option {
+                font-family: VWAGTheSansRegular, Arial, sans-serif !important;
+            }
         </style>
         <style>
             /* <!-- SLICK CAROUSEL --> */
@@ -431,50 +475,63 @@
                         </div>
 
                         <div class="flex flex-col w-full lg:px-[4rem]">
-                            <form id="vwfs-form" class="grid grid-cols-4 gap-[1rem]" novalidate>
+                            <form
+                                id="vwfs-form"
+                                name="form_262463234869365"
+                                class="grid grid-cols-4 gap-[1rem]"
+                                action="https://eu-submit.jotform.com/submit/262463234869365"
+                                method="post"
+                                accept-charset="utf-8"
+                                autocomplete="on"
+                                novalidate
+                            >
+                                <input type="hidden" name="formID" value="262463234869365">
+                                <input type="hidden" name="simple_spc" value="262463234869365-262463234869365">
+                                <input type="hidden" name="submitSource" value="external">
+                                <input type="hidden" name="website" value="">
                                 <div class="col-span-4 lg:col-span-2">
                                     <label for="first_name" class="sr-only">First name</label>
-                                    <input type="text" id="first_name" name="first_name" placeholder="First name" required aria-describedby="first_name-error" class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol">
+                                    <input type="text" id="first_name" name="q3_name[first]" placeholder="First name" required aria-describedby="first_name-error" class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol">
                                     <span class="field-error" id="first_name-error" aria-live="polite"></span>
                                 </div>
                                 <div class="grid grid-cols-1 col-span-4 lg:col-span-2">
                                     <label for="last_name" class="sr-only">Last name</label>
-                                    <input type="text" id="last_name" name="last_name" placeholder="Last name" required aria-describedby="last_name-error" class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol">
+                                    <input type="text" id="last_name" name="q3_name[last]" placeholder="Last name" required aria-describedby="last_name-error" class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol">
                                     <span class="field-error" id="last_name-error" aria-live="polite"></span>
                                 </div>
                                 <div class="col-span-4 lg:col-span-2">
                                     <label for="email" class="sr-only">Email address</label>
-                                    <input type="email" id="email" name="email" placeholder="Email address" required aria-describedby="email-error" class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol">
+                                    <input type="email" id="email" name="q4_email" placeholder="Email address" required aria-describedby="email-error" class="w-full px-[1rem] py-[1rem] bg-white rounded-[1rem] placeholder:text-dark-petrol">
                                     <span class="field-error" id="email-error" aria-live="polite"></span>
                                 </div>
                                 <div class="grid grid-cols-1 col-span-4 lg:col-span-2 mb-[1rem]">
                                     <label for="employee_size" class="sr-only">Fleet size</label>
-                                    <select id="employee_size" name="employee_size" required aria-describedby="employee_size-error" class="col-start-1 row-start-1 w-full appearance-none bg-white rounded-[1rem] py-[1rem] pl-[1rem] pr-[3rem] placeholder:text-dark-petrol text-dark-petrol outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
+                                    <select id="employee_size" name="q16_typeA16" required aria-describedby="employee_size-error" class="col-start-1 row-start-1 w-full appearance-none bg-white rounded-[1rem] py-[1rem] pl-[1rem] pr-[3rem] placeholder:text-dark-petrol text-dark-petrol outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                                         <option selected disabled>
                                             Employee size
                                         </option>
-                                        <option value="Less than 5">
+                                        <option value="Less than 5 Employees">
                                             Less than 5 employees
                                         </option>
-                                        <option value="11-20">
+                                        <option value="11-20 Employees">
                                             11 &ndash; 20 employees
                                         </option>
-                                        <option value="21-50">
+                                        <option value="21-50 Employees">
                                             21 &ndash; 50 employees
                                         </option>
-                                        <option value="51-100">
+                                        <option value="51-100 Employees">
                                             51 &ndash; 100 employees
                                         </option>
-                                        <option value="101-300">
+                                        <option value="101-300 Employees">
                                             101 &ndash; 300 employees
                                         </option>
-                                        <option value="301-400">
+                                        <option value="301-400 Employees">
                                             301 &ndash; 400 employees
                                         </option>
-                                        <option value="401-500">
+                                        <option value="401-500 Employees">
                                             401 &ndash; 500 employees
                                         </option>
-                                        <option value="501+">
+                                        <option value="501+ Employees">
                                             501+ employees
                                         </option>
                                     </select>
@@ -493,11 +550,11 @@
                                         within your organisation?
                                     </p>
                                     <div class="flex gap-[1rem] mt-[1rem]" id="decision_maker-group">
-                                        <input type="radio" id="decision_maker_yes" name="decision_maker" value="Yes" class="dm-checkbox-input">
+                                        <input type="radio" id="decision_maker_yes" name="q5_decisionMaking" value="Yes" class="dm-checkbox-input">
                                         <label for="decision_maker_yes" class="dm-checkbox-label">
                                             <span class="text-dark-petrol font-medium">Yes</span>
                                         </label>
-                                        <input type="radio" id="decision_maker_no" name="decision_maker" value="No" class="dm-checkbox-input">
+                                        <input type="radio" id="decision_maker_no" name="q5_decisionMaking" value="No" class="dm-checkbox-input">
                                         <label for="decision_maker_no" class="dm-checkbox-label">
                                             <span class="text-dark-petrol font-medium">No</span>
                                         </label>
@@ -511,9 +568,9 @@
                                         VWFS&nbsp;|&nbsp;Fleet by email
                                     </p>
                                     <div id="email_opt_in-group" class="flex gap-[2rem] shrink-0">
-                                        <input type="radio" id="email_opt_in_yes" name="email_opt_in" value="Yes" class="dm-checkbox-input">
+                                        <input type="radio" id="email_opt_in_yes" name="q11_idLike11" value="Yes" class="dm-checkbox-input">
                                         <label for="email_opt_in_yes" class="dm-inline-radio-label">Yes</label>
-                                        <input type="radio" id="email_opt_in_no" name="email_opt_in" value="No" class="dm-checkbox-input">
+                                        <input type="radio" id="email_opt_in_no" name="q11_idLike11" value="No" class="dm-checkbox-input">
                                         <label for="email_opt_in_no" class="dm-inline-radio-label">No</label>
                                     </div>
                                     <span class="field-error" id="email_opt_in-error" aria-live="polite"></span>
@@ -3360,7 +3417,7 @@
                         document.getElementById('employee_size').selectedIndex ===
                             0
                     ) {
-                        setError('employee_size', 'Please select your fleet size.')
+                        setError('employee_size', 'Please select your employee size.')
                         valid = false
                     } else {
                         setError('employee_size', '')
@@ -3368,7 +3425,7 @@
 
                     // Decision maker radio
                     var decisionMakerChecked = form.querySelector(
-                        'input[name="decision_maker"]:checked'
+                        'input[name="q5_decisionMaking"]:checked'
                     )
                     if (!decisionMakerChecked) {
                         setGroupError(
@@ -3385,47 +3442,9 @@
                         )
                     }
 
-                    // Areas of interest checkboxes
-                    var areasChecked = form.querySelectorAll(
-                        'input[name="areas_of_interest"]:checked'
-                    )
-                    if (areasChecked.length === 0) {
-                        setGroupError(
-                            'areas_of_interest-group',
-                            'areas_of_interest',
-                            'Please select at least one area of interest.'
-                        )
-                        valid = false
-                    } else {
-                        setGroupError(
-                            'areas_of_interest-group',
-                            'areas_of_interest',
-                            ''
-                        )
-                    }
-
-                    // Key challenges checkboxes
-                    var challengesChecked = form.querySelectorAll(
-                        'input[name="key_challenges"]:checked'
-                    )
-                    if (challengesChecked.length === 0) {
-                        setGroupError(
-                            'key_challenges-group',
-                            'key_challenges',
-                            'Please select at least one key challenge.'
-                        )
-                        valid = false
-                    } else {
-                        setGroupError(
-                            'key_challenges-group',
-                            'key_challenges',
-                            ''
-                        )
-                    }
-
                     // Email opt-in radio
                     var emailOptInChecked = form.querySelector(
-                        'input[name="email_opt_in"]:checked'
+                        'input[name="q11_idLike11"]:checked'
                     )
                     if (!emailOptInChecked) {
                         setGroupError(
@@ -3471,7 +3490,7 @@
                         setError('employee_size', '')
                     })
 
-                form.querySelectorAll('input[name="decision_maker"]').forEach(
+                form.querySelectorAll('input[name="q5_decisionMaking"]').forEach(
                     function (el) {
                         el.addEventListener('change', function () {
                             setGroupError(
@@ -3483,31 +3502,7 @@
                     }
                 )
 
-                form.querySelectorAll(
-                    'input[name="areas_of_interest"]'
-                ).forEach(function (el) {
-                    el.addEventListener('change', function () {
-                        setGroupError(
-                            'areas_of_interest-group',
-                            'areas_of_interest',
-                            ''
-                        )
-                    })
-                })
-
-                form.querySelectorAll('input[name="key_challenges"]').forEach(
-                    function (el) {
-                        el.addEventListener('change', function () {
-                            setGroupError(
-                                'key_challenges-group',
-                                'key_challenges',
-                                ''
-                            )
-                        })
-                    }
-                )
-
-                form.querySelectorAll('input[name="email_opt_in"]').forEach(
+                form.querySelectorAll('input[name="q11_idLike11"]').forEach(
                     function (el) {
                         el.addEventListener('change', function () {
                             setGroupError(
