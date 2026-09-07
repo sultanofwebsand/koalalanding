@@ -3477,15 +3477,17 @@
                         return
                     }
 
-                    // Open the guide immediately from the user's submit action.
-                    // This avoids the new tab being blocked as a popup.
-                    var guideWindow = window.open('about:blank', '_blank')
-                    if (guideWindow) {
-                        try {
-                            guideWindow.opener = null
-                            guideWindow.location.href = guideUrl
-                        } catch (err) {}
-                    }
+                    // Open the guide directly in a new tab from the user's
+                    // submit action. Using a real target="_blank" link is more
+                    // reliable across browsers than opening about:blank first.
+                    var guideLink = document.createElement('a')
+                    guideLink.href = guideUrl
+                    guideLink.target = '_blank'
+                    guideLink.rel = 'noopener noreferrer'
+                    guideLink.style.display = 'none'
+                    document.body.appendChild(guideLink)
+                    guideLink.click()
+                    guideLink.remove()
 
                     // Preserve the existing Marcloud UTM handling.
                     if (typeof getCookieAndAddToLastVariables === 'function') {
@@ -3508,9 +3510,8 @@
                     // Replace the visible form with an on-page thank-you state.
                     var formContainer = form.parentElement
                     if (formContainer) {
-                        var fallback = guideWindow
-                            ? ''
-                            : '<p class="pt-[2rem] text-center text-white">If your guide did not open automatically, <a href="' + guideUrl + '" target="_blank" rel="noopener" class="text-bright-blue underline">open it here</a>.</p>'
+                        var fallback =
+                            '<p class="pt-[2rem] text-center text-white">If your guide did not open automatically, <a href="' + guideUrl + '" target="_blank" rel="noopener noreferrer" class="text-bright-blue underline">open it here</a>.</p>'
 
                         formContainer.innerHTML =
                             '<div id="form-thank-you" class="py-[5rem] text-center" role="status" aria-live="polite">' +
