@@ -3460,12 +3460,9 @@
                     return valid
                 }
 
-                var redirectUrl = 'https://36343baa83.sdkhosting.net/pub/k4k4/pkoc5yl3/mi2/p80/oxw/EB1368829_VWFS_Fleet_Sal_Sac_Guide_v03c%20%281%29.pdf'
+                var guideUrl = 'https://36343baa83.sdkhosting.net/pub/k4k4/pkoc5yl3/mi2/p80/oxw/EB1368829_VWFS_Fleet_Sal_Sac_Guide_v03c%20%281%29.pdf'
 
                 form.addEventListener('submit', function (e) {
-                    // Always stop the browser's normal form navigation.
-                    // This prevents any Jotform Thank You / redirect rule
-                    // from taking control of the top-level page.
                     e.preventDefault()
 
                     if (!validateForm()) {
@@ -3480,16 +3477,24 @@
                         return
                     }
 
-                    // Preserve the existing Marcloud UTM handling before
-                    // we package up the Jotform submission.
+                    // Open the guide immediately from the user's submit action.
+                    // This avoids the new tab being blocked as a popup.
+                    var guideWindow = window.open('about:blank', '_blank')
+                    if (guideWindow) {
+                        try {
+                            guideWindow.opener = null
+                            guideWindow.location.href = guideUrl
+                        } catch (err) {}
+                    }
+
+                    // Preserve the existing Marcloud UTM handling.
                     if (typeof getCookieAndAddToLastVariables === 'function') {
                         getCookieAndAddToLastVariables()
                     }
 
                     var formData = new FormData(form)
 
-                    // Send the submission to Jotform without allowing its
-                    // response or redirect to navigate this page.
+                    // Submit to Jotform in the background only.
                     try {
                         fetch(form.action, {
                             method: 'POST',
@@ -3497,19 +3502,26 @@
                             mode: 'no-cors',
                             credentials: 'omit',
                             keepalive: true,
-                        }).catch(function () {
-                            // Navigation still proceeds to our required guide.
-                        })
-                    } catch (err) {
-                        // Navigation still proceeds to our required guide.
+                        }).catch(function () {})
+                    } catch (err) {}
+
+                    // Replace the visible form with an on-page thank-you state.
+                    var formContainer = form.parentElement
+                    if (formContainer) {
+                        var fallback = guideWindow
+                            ? ''
+                            : '<p class="pt-[2rem] text-center text-white">If your guide did not open automatically, <a href="' + guideUrl + '" target="_blank" rel="noopener" class="text-bright-blue underline">open it here</a>.</p>'
+
+                        formContainer.innerHTML =
+                            '<div id="form-thank-you" class="py-[5rem] text-center" role="status" aria-live="polite">' +
+                                '<h3 class="pb-[2rem] text-[2.8rem] text-white leading-[1.3] xl:text-[3.4rem]">Thank you</h3>' +
+                                '<p class="text-white">Your guide has opened in a new tab.</p>' +
+                                fallback +
+                            '</div>'
                     }
 
-                    // Our landing page owns the redirect.
-                    // replace() also prevents the Jotform endpoint being added
-                    // to the visitor's browser history.
-                    setTimeout(function () {
-                        window.location.replace(redirectUrl)
-                    }, 700)
+                    // Recalculate desktop spacing now the form area is shorter.
+                    window.dispatchEvent(new Event('resize'))
                 })
 
                 // Clear individual field errors on input/change
